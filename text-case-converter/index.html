@@ -1,43 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>Text Case Converter - Uppercase, Lowercase, Title Case | DevOpsVaultX</title>
+    <title>Text Case Converter | String Manipulation Utility</title>
     
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2W1QDP3V3"></script>
+    <!-- Meta Descriptions & Search Engine Directives (Strictly < 155 chars) -->
+    <meta name="description" content="Free online text case converter. Transform text into UPPERCASE, lowercase, Title Case, camelCase, snake_case, and kebab-case instantly in-browser.">
+    <meta name="keywords" content="text case converter, string manipulation, lowercase to uppercase, camelcase converter, title case generator, devops tools, devopsvaultx">
+    <meta name="author" content="DevOpsVaultX">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#03050a">
+    <meta name="color-scheme" content="dark">
+    
+    <!-- Canonical URL -->
+    
+<link rel="canonical" href="https://www.devopsvaultx.com/text-case-converter/">
+
+    
+    <!-- Open Graph (OG) Meta Tags for Social Graph Sharing -->
+    <meta property="og:site_name" content="DevOpsVaultX">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Text Case Converter | String Manipulation Utility">
+    <meta property="og:description" content="Transform text into UPPERCASE, lowercase, Title Case, camelCase, and alternating case instantly.">
+    <meta property="og:url" content="https://www.devopsvaultx.com/text-case-converter/">
+    <meta property="og:image" content="https://www.devopsvaultx.com/static/images/og-image.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:alt" content="DevOpsVaultX - Daily Tools & Utilities for Everyone">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devopsvaultx">
+    <meta name="twitter:creator" content="@devopsvaultx">
+    <meta name="twitter:title" content="Text Case Converter | DevOpsVaultX">
+    <meta name="twitter:description" content="Transform text into UPPERCASE, lowercase, Title Case, camelCase, and alternating case instantly.">
+    <meta name="twitter:image" content="https://www.devopsvaultx.com/static/images/og-image.webp">
+    <meta name="twitter:image:alt" content="DevOpsVaultX - Online Tools Hub">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HNHQMC7VEY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-N2W1QDP3V3', {
-        'cookie_flags': 'SameSite=None;Secure'
-        });
+
+        gtag('config', 'G-HNHQMC7VEY');
     </script>
         
-    <link rel="icon" type="image/png" href="/static/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/static/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/static/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="DevOpsVaultX" />
-    <link rel="manifest" href="/static/favicon/site.webmanifest" />
+    <!-- Favicon & Mobile App Icons -->
+    <link rel="icon" type="image/png" href="/static/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/static/favicon/favicon.svg">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="DevOpsVaultX">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
         
+    <!-- Performance Optimization: Resource Hints & Critical Font Preloading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Optimized Google Fonts with display=optional & Non-blocking Load -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=optional"></noscript>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Non-blocking Font Awesome Icons (Zero-cookie jsDelivr CDN) -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" crossorigin="anonymous"></noscript>
     
+    <!-- Core Application Stylesheet -->
     <link rel="stylesheet" href="/static/style.css">
 
+    <!-- Global Structured Data: Organization, WebSite & SiteNavigationElement Schemas -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.devopsvaultx.com/#organization",
+          "name": "DevOpsVaultX",
+          "url": "https://www.devopsvaultx.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.devopsvaultx.com/#logo",
+            "url": "https://www.devopsvaultx.com/static/favicon/favicon-96x96.png",
+            "caption": "DevOpsVaultX Logo"
+          },
+          "sameAs": [
+            "https://www.youtube.com/@devopsvaultx",
+            "https://docs.devopsvaultx.com/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.devopsvaultx.com/#website",
+          "url": "https://www.devopsvaultx.com/",
+          "name": "DevOpsVaultX",
+          "description": "Free online tools for everyone. Merge PDFs, convert images, generate QR codes, count words, build strong passwords, and run utilities with 100% privacy.",
+          "publisher": {
+            "@id": "https://www.devopsvaultx.com/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.devopsvaultx.com/?search={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "@id": "https://www.devopsvaultx.com/#navigation",
+          "name": "Main Site Navigation",
+          "hasPart": [
+            {
+              "@type": "WebPage",
+              "name": "Home",
+              "url": "https://www.devopsvaultx.com/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Merge PDF",
+              "url": "https://www.devopsvaultx.com/merge-pdf/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Image to PDF",
+              "url": "https://www.devopsvaultx.com/image-to-pdf/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Word Counter",
+              "url": "https://www.devopsvaultx.com/word-counter/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "QR Code Generator",
+              "url": "https://www.devopsvaultx.com/qr-code-generator/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "HTML Sitemap",
+              "url": "https://www.devopsvaultx.com/sitemap/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     
-<!-- SEO & CSS -->
-<meta name="description" content="Free online text case converter tool. Quickly transform your strings into uppercase, lowercase, title case, and more.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.devopsvaultx.com/text-case-converter/#app",
+      "name": "Text Case Converter",
+      "url": "https://www.devopsvaultx.com/text-case-converter/",
+      "description": "Free online text case converter tool to manipulate strings into various cases.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.devopsvaultx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Text Case Converter",
+          "item": "https://www.devopsvaultx.com/text-case-converter/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+    
 <style>
     .tool-container { max-width: 900px; margin: 2rem auto; padding: 2rem; border-radius: 16px; }
     .tool-header { margin-bottom: 2rem; text-align: center; }
@@ -55,33 +217,41 @@
 
 </head>
 <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <div class="ambient-glow glow-1"></div>
-    <div class="ambient-glow glow-2"></div>
+    <!-- Ambient Visual Glow Backgrounds -->
+    <div class="ambient-glow glow-1" aria-hidden="true"></div>
+    <div class="ambient-glow glow-2" aria-hidden="true"></div>
 
-    <header class="glass-nav">
+    <!-- Semantic Header & Navigation -->
+    <header class="glass-nav" role="banner">
         <div class="container nav-content">
-            <a href="/" class="logo-group" aria-label="Home">
+            <a href="/" class="logo-group" aria-label="DevOpsVaultX Home">
                 <div class="logo-icon" aria-hidden="true">
                     <i class="fa-solid fa-cube"></i>
                     <span class="ping-indicator"></span>
                 </div>
-                <div class="logo-text">DevOpsVault<span class="highlight-x">X</span></div>
+                <span class="logo-text">DevOpsVault<span class="highlight-x">X</span></span>
             </a>
 
-            <div class="nav-actions">
-                <a class="nav-link" href="https://docs.devopsvaultx.com/" target="_blank" rel="noopener noreferrer">DOCS</a>
+            <nav class="nav-actions" aria-label="Main Navigation">
+                <a class="nav-link" href="/#grid-container">ALL TOOLS</a>
+                <a class="nav-link" href="/merge-pdf/">PDF</a>
+                <a class="nav-link" href="/word-counter/">WORD COUNT</a>
+                <a class="nav-link" href="/qr-code-generator/">QR CODE</a>
+                <a class="nav-link" href="/sitemap/">SITEMAP</a>
                 <a class="nav-link" href="/about/">ABOUT</a>
-                <a class="nav-link" href="/contact/">CONTACT</a>
                 
-                <a href="https://www.youtube.com/@devopsvaultx?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="premium-btn youtube-btn" aria-label="Visit our YouTube channel">
+                <a href="https://www.youtube.com/@devopsvaultx?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="premium-btn youtube-btn" aria-label="Subscribe to DevOpsVaultX on YouTube">
                     <i class="fa-brands fa-youtube" style="color: #ff2a5f;" aria-hidden="true"></i> <span>SUBSCRIBE</span>
                 </a>
-            </div>
+            </nav>
         </div>
     </header>
 
-    <main class="main-content">
+    <!-- Semantic Main Content Area -->
+    <main id="main-content" class="main-content" role="main">
         <div class="container content-wrapper">
             
 <!-- Back Button -->
@@ -140,12 +310,39 @@
         </div>
     </main>
 
-    <footer class="glass-footer">
-        <div class="container footer-center">
-            <p>&copy; 2026 <strong>DevOpsVaultX</strong> <span class="divider">|</span> <span class="text-gradient">Code. Deploy. Automate. Repeat.</span> <i class="fa fa-heart heartbeat" aria-hidden="true"></i></p>
+    <!-- Semantic Footer with SEO Links & Sitemap -->
+    <footer class="glass-footer" role="contentinfo">
+        <div class="container footer-content-wrapper">
+            <nav class="footer-nav" aria-label="Footer Navigation">
+                <a href="/" class="footer-link">Home</a>
+                <span class="divider" aria-hidden="true">|</span>
+                <a href="/merge-pdf/" class="footer-link">Merge PDF</a>
+                <span class="divider" aria-hidden="true">|</span>
+                <a href="/image-to-pdf/" class="footer-link">Image to PDF</a>
+                <span class="divider" aria-hidden="true">|</span>
+                <a href="/word-counter/" class="footer-link">Word Counter</a>
+                <span class="divider" aria-hidden="true">|</span>
+                <a href="/qr-code-generator/" class="footer-link">QR Generator</a>
+                <span class="divider" aria-hidden="true">|</span>
+                <a href="/password-generator/" class="footer-link">Password Generator</a>
+                <span class="divider" aria-hidden="true">|</span>
+                <a href="/percentage-calculator/" class="footer-link">Percentage Calc</a>
+                <span class="divider" aria-hidden="true">|</span>
+                <a href="/about/" class="footer-link">About</a>
+                <span class="divider" aria-hidden="true">|</span>
+                <a href="/contact/" class="footer-link">Contact</a>
+                <span class="divider" aria-hidden="true">|</span>
+                <a href="/sitemap/" class="footer-link" title="HTML Sitemap">HTML Sitemap</a>
+                <span class="divider" aria-hidden="true">|</span>
+                <a href="/sitemap.xml" target="_blank" rel="noopener" class="footer-link" title="XML Sitemap Feed">XML Sitemap</a>
+            </nav>
+            <div class="footer-center">
+                <p>&copy; 2026 <strong>DevOpsVaultX</strong> <span class="divider" aria-hidden="true">|</span> <span class="text-gradient">Free Daily Online Tools For Everyone Worldwide.</span> <i class="fa fa-heart heartbeat" aria-hidden="true"></i></p>
+            </div>
         </div>
     </footer>
 
+    <!-- Defer main script execution for non-blocking rendering & 100/100 PageSpeed -->
     <script src="/static/script.js" defer></script>
     
     

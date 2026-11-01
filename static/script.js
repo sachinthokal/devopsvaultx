@@ -1,104 +1,60 @@
+/**
+ * DevOpsVaultX - Core Client-Side Logic & SEO Engine
+ * Provides instant in-browser filtering, URL state synchronization, and zero-CLS interactions.
+ */
+
 let currentCategory = 'all';
-let toolsData = [];
 
-window.addEventListener('DOMContentLoaded', async () => {
-    const grid = document.getElementById('grid-container');
-    
-    // Safety Check: If grid-container doesn't exist (e.g., on a tool page), stop execution immediately
-    if (!grid) return;
-
-    try {
-        // Path Fix: Added a leading slash '/' to consistently fetch from the root directory across all sub-URLs
-        const response = await fetch('/static/data.json');
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        toolsData = await response.json();
-        
-        // FIX: Sort tools data so that 'active' cards appear first and 'disabled' (Coming Soon) appear at the bottom
-        toolsData.sort((a, b) => {
-            if (a.status === 'active' && b.status === 'disabled') return -1;
-            if (a.status === 'disabled' && b.status === 'active') return 1;
-            return 0;
-        });
-
-        renderCards();
-    } catch (error) {
-        console.error("Error loading JSON data:", error);
-        grid.innerHTML = `<p style="color: #ff2a5f; text-align: center; width: 100%;">Failed to load data. Please ensure local server is running.</p>`;
-    }
+// Initialize interactions on DOMContentLoaded
+window.addEventListener('DOMContentLoaded', () => {
+    initCards();
+    checkUrlParams();
+    setupTypingEffect();
 });
 
-function renderCards() {
-    const grid = document.getElementById('grid-container');
-    // Safety Check: Ensure the grid exists before manipulating its innerHTML
-    if (!grid) return;
-
-    grid.innerHTML = '';
-
-    toolsData.forEach(tool => {
-        const isDisabled = tool.status === 'disabled';
-        const cardTag = isDisabled ? 'div' : 'a';
-        
-        const actionUrlAttr = isDisabled 
-            ? 'aria-disabled="true"' 
-            : `href="${tool.actionUrl}" target="_blank" rel="noopener noreferrer" aria-label="Launch ${tool.title}"`;
-
-        let cardClasses = isDisabled ? "bento-card disabled" : "bento-card";
-        
-        // FIX: Added 'orange-btn' class to Coming Soon button for customized styling
-        let buttonHTML = isDisabled 
-            ? `<span class="open-btn orange-btn">Coming Soon <i class="fa-solid fa-lock" aria-hidden="true" style="margin-left: 4px;"></i></span>`
-            : `<span class="open-btn">Launch <i class="fa-solid fa-arrow-right" aria-hidden="true" style="margin-left: 4px;"></i></span>`;
-
-        const cardHTML = `
-            <${cardTag} ${actionUrlAttr} class="${cardClasses}" data-category="${tool.category}" data-search="${tool.searchTags}">
-                <div class="card-content">
-                    <div class="card-header">
-                        <span class="tool-badge" style="background: ${tool.badgeBg}; color: ${tool.badgeColor}; border-color: ${tool.badgeBorder};">${tool.badge}</span>
-                        <span class="time-tag">${tool.duration}</span>
-                    </div>
-                    <h2 class="tool-title">${tool.title}</h2>
-                    <p class="tool-desc">${tool.desc}</p>
-                </div>
-                <div class="card-footer">
-                    <span class="metric" style="color: ${tool.metricColor};">
-                        <i class="${tool.metricIcon}" aria-hidden="true" style="margin-right: 4px;"></i> ${tool.friendlyMetric}
-                    </span>
-                    ${buttonHTML}
-                </div>
-            </${cardTag}>
-        `;
-        grid.insertAdjacentHTML('beforeend', cardHTML);
+// Setup mouse tracking glow effect on bento cards
+function initCards() {
+    const cards = document.querySelectorAll('.bento-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
     });
-
-    document.querySelectorAll('.bento-card').forEach(card => {
-        card.onmousemove = e => {
-            const rect = card.getBoundingClientRect(),
-                  x = e.clientX - rect.left,
-                  y = e.clientY - rect.top;
-            card.style.setProperty("--mouse-x", `${x}px`);
-            card.style.setProperty("--mouse-y", `${y}px`);
-        }
-    });
-
-    filterHub();
 }
 
+// Category selection with URL hash state for SEO deep-linking
 function setCategory(category) {
     currentCategory = category;
-    const tabBtn = document.getElementById(`tab-${category}`);
-    // Safety Check: Ensure the tab button exists before toggling classes
-    if (!tabBtn) return;
+    
+    // Update ARIA tabs and active visual states
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+        const isMatch = btn.getAttribute('data-category') === category || btn.id === `tab-${category}`;
+        btn.classList.toggle('active', isMatch);
+        btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+    });
 
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    tabBtn.classList.add('active');
+    // Clean URL state without page refresh (supports back button and direct sharing)
+    if (category === 'all') {
+        if (window.location.hash) {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+    } else {
+        history.replaceState(null, '', '#' + encodeURIComponent(category));
+    }
+
     filterHub();
 }
 
+// Filter cards instantly based on active category and user search input
 function filterHub() {
     const searchInput = document.getElementById('engine-search');
     const noResults = document.getElementById('no-results');
     
-    // Safety Check: Exit if search elements don't exist on the current page
     if (!searchInput || !noResults) return;
 
     const query = searchInput.value.toLowerCase().trim();
@@ -107,9 +63,15 @@ function filterHub() {
 
     cards.forEach(card => {
         const cardCat = card.getAttribute('data-category');
-        const cardMeta = card.getAttribute('data-search');
+        const cardMeta = (card.getAttribute('data-search') || '').toLowerCase();
+        const cardTitle = (card.querySelector('.tool-title')?.textContent || '').toLowerCase();
+        const cardDesc = (card.querySelector('.tool-desc')?.textContent || '').toLowerCase();
+
         const matchesCat = (currentCategory === 'all' || cardCat === currentCategory);
-        const matchesSearch = cardMeta.includes(query);
+        const matchesSearch = query === '' || 
+                              cardMeta.includes(query) || 
+                              cardTitle.includes(query) || 
+                              cardDesc.includes(query);
 
         if (matchesCat && matchesSearch) {
             card.classList.remove('hidden');
@@ -122,45 +84,38 @@ function filterHub() {
     noResults.classList.toggle('hidden', matchedCount !== 0);
 }
 
+// Clear all active filters and reset view
 function clearSearchFilters() {
     const searchInput = document.getElementById('engine-search');
     if (searchInput) searchInput.value = '';
     setCategory('all');
 }
 
-// --- Typing Effect Setup ---
-const text1 = "Skip The Search.";
-const text2 = "Premium Modern Tools For Everyone !";
-const line1 = document.getElementById("type-line-1");
-const line2 = document.getElementById("type-line-2");
+// Check deep-linking query parameters & hash on load (#pdf, ?category=text, ?search=merge)
+function checkUrlParams() {
+    const validCategories = ['all', 'pdf', 'text', 'img', 'utilities', 'devops'];
+    const hash = window.location.hash.replace('#', '').toLowerCase();
+    
+    const searchParams = new URLSearchParams(window.location.search);
+    const catParam = searchParams.get('category')?.toLowerCase();
+    const queryParam = searchParams.get('search');
 
-let i = 0, j = 0;
-const speed = 100; 
-const pause = 1000; 
+    if (hash && validCategories.includes(hash)) {
+        setCategory(hash);
+    } else if (catParam && validCategories.includes(catParam)) {
+        setCategory(catParam);
+    }
 
-function typeEffect() {
-    // Safety Check: If typing elements do not exist on the current page, exit cleanly without throwing errors
-    if (!line1 || !line2) return;
-
-    if (i < text1.length) {
-        line1.innerHTML += text1.charAt(i); 
-        i++;
-        setTimeout(typeEffect, speed);
-    } 
-    else if (i === text1.length && j === 0) {
-        i++;
-        setTimeout(typeEffect, pause); 
-    } 
-    else if (j < text2.length) {
-        line2.innerHTML += text2.charAt(j); 
-        j++;
-        setTimeout(typeEffect, speed);
+    if (queryParam) {
+        const searchInput = document.getElementById('engine-search');
+        if (searchInput) {
+            searchInput.value = queryParam;
+            filterHub();
+        }
     }
 }
 
-// Safe Event Listener: Only trigger the typing animation if the elements are present on the current DOM
-window.addEventListener('load', () => {
-    if (line1 || line2) {
-        setTimeout(typeEffect, 500);
-    }
-});
+// Pre-rendered banner subtitle - preserves 0.000 CLS and zero main-thread overhead
+function setupTypingEffect() {
+    // Text is pre-rendered statically in the HTML to guarantee 0.000 CLS.
+}
