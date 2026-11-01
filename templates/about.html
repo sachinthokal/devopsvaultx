@@ -1,16 +1,61 @@
 {% extends 'base.html' %}
 
-{% block head %}
-<title>About DevOpsVaultX - Premium Modern Tools For Everyone</title>
-<meta name="description" content="Skip the search. DevOpsVaultX is your ultimate all-in-one daily toolkit for fast, serverless utility generation. Secure, browser-based, and lightning fast with 100% client-side privacy.">
-<meta name="keywords" content="devopsvaultx, devops tools, serverless utilities, browser-based tools, secure developer toolkit, skip the search, free web tools, fast utility generation">
+{% block title %}About DevOpsVaultX | Free Browser-Based Developer Hub{% endblock %}
+
+{% block description %}DevOpsVaultX is a serverless daily developer toolkit. Fast, client-side browser utilities engineered for DevOps engineers with 100% data privacy.{% endblock %}
+
+{% block keywords %}about devopsvaultx, devops tools mission, browser-based tools, secure developer toolkit, serverless developer utilities{% endblock %}
+
+{% block canonical %}
 <link rel="canonical" href="https://www.devopsvaultx.com/about/">
+{% endblock %}
 
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.devopsvaultx.com/about/">
-<meta property="og:title" content="About DevOpsVaultX - Premium Modern Tools For Everyone">
-<meta property="og:description" content="Skip the search. Access a secure, lightning-fast, and serverless developer tool hub. 100% private, browser-based utility execution.">
+{% block og_title %}About DevOpsVaultX | Free Browser-Based Developer Hub{% endblock %}
+{% block og_description %}DevOpsVaultX is a serverless daily developer toolkit. Fast, client-side browser utilities engineered for DevOps engineers with 100% data privacy.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/about/{% endblock %}
 
+{% block twitter_title %}About DevOpsVaultX | Free Browser-Based Developer Hub{% endblock %}
+{% block twitter_description %}DevOpsVaultX is a serverless daily developer toolkit. Fast, client-side browser utilities engineered for DevOps engineers with 100% data privacy.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://www.devopsvaultx.com/about/#webpage",
+      "name": "About DevOpsVaultX",
+      "url": "https://www.devopsvaultx.com/about/",
+      "description": "About DevOpsVaultX - Privacy-first, serverless developer toolkit for cloud and DevOps engineers.",
+      "breadcrumb": {
+        "@id": "https://www.devopsvaultx.com/about/#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.devopsvaultx.com/about/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.devopsvaultx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "https://www.devopsvaultx.com/about/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block head %}
 <style>
     /* --- Premium Tech-Terminal Layout Architecture (No Cards) --- */
     .terminal-container {

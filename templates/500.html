@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}500 - Server Error | DevOpsVaultX{% endblock %}
+
+{% block description %}An unexpected error occurred. Our team has been notified. Please try again or return to the homepage.{% endblock %}
+
+{% block canonical %}
+<meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block content %}
+<section class="tool-view-container" style="text-align: center; padding: 4rem 1rem; max-width: 680px; margin: 0 auto;">
+    <div style="font-size: clamp(4rem, 10vw, 7rem); font-weight: 800; line-height: 1; margin-bottom: 1rem; background: linear-gradient(135deg, #ef4444, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        500
+    </div>
+    
+    <h1 style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 700; margin-bottom: 1rem; color: var(--text-main);">
+        Internal Server Error
+    </h1>
+    
+    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 2.5rem;">
+        Something went wrong on our end while processing your request. The incident has been recorded in our production logs. Please refresh or try again in a moment.
+    </p>
+
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <button onclick="window.location.reload()" class="premium-btn primary-btn" style="padding: 0.85rem 2rem; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+            <i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Refresh Page
+        </button>
+        <a href="/" class="premium-btn secondary-btn" style="text-decoration: none; padding: 0.85rem 2rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-house" aria-hidden="true"></i> Go to Homepage
+        </a>
+    </div>
+</section>
+{% endblock %}
+

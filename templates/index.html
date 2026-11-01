@@ -1,54 +1,360 @@
 {% extends 'base.html' %}
 
-{% block head %}
-<meta name="description" content="Welcome to DevOpsVaultX - Your ultimate serverless utility hub. Generate cron expressions, encode/decode Base64 strings, and access free developer tools instantly.">
-<meta name="keywords" content="devops tools, web utilities, cron expression generator, base64 encoder, devopsvaultx, free developer hub">
-<link rel="canonical" href="https://www.devopsvaultx.com/">
+{% block title %}DevOpsVaultX | Free Online Daily Tools for Everyone{% endblock %}
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="DevOpsVaultX - Ultimate Daily Utilities Hub for Developers">
-<meta property="og:url" content="https://www.devopsvaultx.com/">
-<meta property="og:image" content="{{ url_for('static', filename='images/og-image.webp', _external=True) }}">
-<meta property="og:description" content="All-in-one platform for fast, serverless utility generation. Secure, browser-based, and lightning fast.">
+{% block description %}Free online tools for everyone. Merge PDFs, convert photos, generate QR codes, count words, create strong passwords, and run web tools with 100% privacy.{% endblock %}
+
+{% block keywords %}free online tools, pdf tools, merge pdf, image to pdf, word counter, qr code generator, password generator, percentage calculator, devopsvaultx{% endblock %}
+
+{% block canonical %}
+<link rel="canonical" href="https://www.devopsvaultx.com/">
+{% endblock %}
+
+{% block og_title %}DevOpsVaultX | Free Online Daily Tools for Everyone{% endblock %}
+{% block og_description %}All-in-one daily platform for fast, free web tools. Secure, browser-based, and lightning fast with 100% privacy.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/{% endblock %}
+
+{% block twitter_title %}DevOpsVaultX | Free Online Daily Tools for Everyone{% endblock %}
+{% block twitter_description %}All-in-one daily platform for fast, free web tools. Secure, browser-based, and lightning fast with 100% privacy.{% endblock %}
+
+{% block schema %}
+<!-- WebApplication, CollectionPage & FAQPage Schemas -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["WebApplication", "CollectionPage"],
+      "@id": "https://www.devopsvaultx.com/#app",
+      "name": "DevOpsVaultX",
+      "url": "https://www.devopsvaultx.com/",
+      "description": "Your all-in-one daily toolkit for fast, free utility generation. Secure, browser-based, and lightning fast for everyone worldwide.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All (Web Browser)",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Merge PDF Files",
+        "Image to PDF Converter",
+        "Free QR Code Generator",
+        "Word & Character Counter",
+        "Strong Password Generator",
+        "Percentage Calculator",
+        "Image Format Converter",
+        "Text Case Converter",
+        "Digital Unit Converter",
+        "Kubernetes YAML Generator",
+        "Cron Schedule Guru",
+        "Base64 Encoder and Decoder",
+        "IP CIDR Subnet Calculator"
+      ],
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Free Daily Online Tools & Utilities Collection",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Merge PDF Files",
+            "url": "https://www.devopsvaultx.com/merge-pdf/",
+            "description": "Combine multiple PDF documents into one organized file for free in your browser."
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Image to PDF Converter",
+            "url": "https://www.devopsvaultx.com/image-to-pdf/",
+            "description": "Turn JPG, PNG, and photos into a clean PDF document in seconds."
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Free QR Code Generator",
+            "url": "https://www.devopsvaultx.com/qr-code-generator/",
+            "description": "Create clean QR codes for links, text, and WiFi with instant PNG download."
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Word & Character Counter",
+            "url": "https://www.devopsvaultx.com/word-counter/",
+            "description": "Count words, characters, sentences, and calculate reading time in real-time."
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Strong Password Generator",
+            "url": "https://www.devopsvaultx.com/password-generator/",
+            "description": "Create strong, random passwords and PINs with cryptographic security."
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Percentage Calculator",
+            "url": "https://www.devopsvaultx.com/percentage-calculator/",
+            "description": "Calculate discounts, percentage differences, and proportions instantly."
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "Image Format Converter",
+            "url": "https://www.devopsvaultx.com/image-converter/",
+            "description": "Convert JPG to PNG, PNG to JPG, WebP, and BMP images instantly."
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "Text Case Converter",
+            "url": "https://www.devopsvaultx.com/text-case-converter/",
+            "description": "Transform text into UPPERCASE, lowercase, Title Case, camelCase, and more."
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "name": "Digital Unit Converter",
+            "url": "https://www.devopsvaultx.com/digital-unit-converter/",
+            "description": "Convert storage (MB to GB), time, temperature, and metric measurements."
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "name": "Kubernetes YAML Generator",
+            "url": "https://www.devopsvaultx.com/kubernetes-yaml-generator/",
+            "description": "Generate clean Kubernetes Deployment, Service, and ConfigMap manifests."
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "name": "Cron Schedule Guru",
+            "url": "https://www.devopsvaultx.com/cron-expression-guru/",
+            "description": "Generate, test, and translate cron schedules into plain English."
+          },
+          {
+            "@type": "ListItem",
+            "position": 12,
+            "name": "Base64 Encoder & Decoder",
+            "url": "https://www.devopsvaultx.com/base64-encoder-decoder/",
+            "description": "Quickly convert plain text to Base64 or decode back with 100% privacy."
+          },
+          {
+            "@type": "ListItem",
+            "position": 13,
+            "name": "IP CIDR Subnet Calculator",
+            "url": "https://www.devopsvaultx.com/ip-cidr-generator/",
+            "description": "Calculate network subnets, IP ranges, and CIDR blocks accurately."
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.devopsvaultx.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is DevOpsVaultX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DevOpsVaultX is a free, all-in-one daily web utility hub for people worldwide. It provides essential tools like PDF mergers, image converters, word counters, QR code generators, secure password creators, and technical calculators."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my files, documents, and text private?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, 100%. All tools run completely client-side in your web browser. No files, passwords, or personal text ever get uploaded to any server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is DevOpsVaultX completely free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! All tools on DevOpsVaultX are 100% free with no sign-ups, no subscriptions, and no usage limitations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do these tools work on mobile phones and tablets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. DevOpsVaultX is designed with a responsive layout that works smoothly across smartphones, tablets, laptops, and desktop computers."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 {% endblock %}
 
 {% block content %}
-<section class="hero-section">
+<!-- Semantic Hero Section (SEO Optimized Single H1) -->
+<section class="hero-section" aria-labelledby="hero-title">
     <div class="container text-center">
-        <div class="status-badge">
-            <span class="status-dot"></span> Active Resources Platform
+        <div class="status-badge" role="status">
+            <span class="status-dot"></span> Free Daily Web Tools &bull; 100% Private in Your Browser
         </div>
-        <h1 class="hero-title">
-            <span id="type-line-1"></span><br>
-            <span id="type-line-2" class="text-gradient"></span>
+        <h1 id="hero-title" class="hero-title">
+            Free Online Daily Tools &amp; <span class="text-gradient">Utilities for Everyone</span>
         </h1>
-        <p class="hero-subtitle">
-            Your all-in-one daily toolkit for fast, serverless utility generation. Secure, browser-based, and lightning fast.
-        </p>
+        <div class="typing-banner" aria-hidden="true">
+            <span id="type-line-1">All Your Daily Tools In One Place.</span> <span id="type-line-2" class="text-gradient">⚡ 100% Free, Private &amp; Instant In Your Browser</span>
+        </div>
     </div>
 </section>
 
-<div class="control-panel glass-panel">
-    <div class="tabs" role="tablist">
-        <button onclick="setCategory('all')" id="tab-all" class="tab-btn active" role="tab">📂 All Tools</button>
-        <button onclick="setCategory('text')" id="tab-text" class="tab-btn" role="tab"><i class="fa-solid fa-font text-warning" aria-hidden="true"></i>&nbsp; &nbsp; Text</button>
-        <button onclick="setCategory('img')" id="tab-img" class="tab-btn" role="tab"><i class="fa-solid fa-image text-warning" aria-hidden="true"></i>&nbsp; &nbsp; Images</button>
-        <button onclick="setCategory('utilities')" id="tab-utilities" class="tab-btn" role="tab"><i class="fa-solid fa-calculator text-warning" aria-hidden="true"></i>&nbsp; &nbsp; Utilities</button>
-        <button onclick="setCategory('automations')" id="tab-automations" class="tab-btn" role="tab"><i class="fa-solid fa-arrows-rotate text-warning" aria-hidden="true"></i>&nbsp; &nbsp; Automation</button>
-        <button onclick="setCategory('networking')" id="tab-networking" class="tab-btn" role="tab"><i class="fa-solid fa-network-wired text-warning" aria-hidden="true"></i>&nbsp; &nbsp; Networking</button>
-        <button onclick="setCategory('others')" id="tab-others" class="tab-btn" role="tab"><i class="fa-solid fa-arrows-rotate text-warning" aria-hidden="true"></i>&nbsp; &nbsp; Others</button>
+<!-- Filter Navigation & Search Bar (SEO & Accessibility Compliant) -->
+<nav class="control-panel glass-panel" aria-label="Tool Categories and Search">
+    <div class="tabs" role="tablist" aria-label="Tool Category Filters">
+        <button onclick="setCategory('all')" id="tab-all" class="tab-btn active" role="tab" aria-selected="true" aria-controls="grid-container" data-category="all">📂 All Tools</button>
+        <button onclick="setCategory('pdf')" id="tab-pdf" class="tab-btn" role="tab" aria-selected="false" aria-controls="grid-container" data-category="pdf"><i class="fa-solid fa-file-pdf text-warning" aria-hidden="true"></i>&nbsp; PDF Tools</button>
+        <button onclick="setCategory('text')" id="tab-text" class="tab-btn" role="tab" aria-selected="false" aria-controls="grid-container" data-category="text"><i class="fa-solid fa-file-lines text-warning" aria-hidden="true"></i>&nbsp; Writing &amp; Text</button>
+        <button onclick="setCategory('img')" id="tab-img" class="tab-btn" role="tab" aria-selected="false" aria-controls="grid-container" data-category="img"><i class="fa-solid fa-image text-warning" aria-hidden="true"></i>&nbsp; Images</button>
+        <button onclick="setCategory('utilities')" id="tab-utilities" class="tab-btn" role="tab" aria-selected="false" aria-controls="grid-container" data-category="utilities"><i class="fa-solid fa-bolt text-warning" aria-hidden="true"></i>&nbsp; Daily Utilities</button>
+        <button onclick="setCategory('devops')" id="tab-devops" class="tab-btn" role="tab" aria-selected="false" aria-controls="grid-container" data-category="devops"><i class="fa-solid fa-code text-warning" aria-hidden="true"></i>&nbsp; Tech &amp; DevOps</button>
     </div>
     <div class="search-box">
+        <label for="engine-search" class="visually-hidden">Search tools and utilities</label>
         <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-        <input type="text" id="engine-search" onkeyup="filterHub()" placeholder="search tools and utilities..." aria-label="Search tools and utilities">
+        <input type="text" id="engine-search" onkeyup="filterHub()" placeholder="Search tools (e.g. PDF, QR code, Word count, Password)..." aria-label="Search tools and utilities" autocomplete="off">
     </div>
-</div>
+</nav>
 
-<div id="grid-container" class="bento-grid" role="region" aria-label="Tools Grid"></div>
+<!-- Pre-rendered Semantic Tools Catalog (Crawlable by Googlebot without JS delay) -->
+<section class="tools-directory-section" aria-labelledby="tools-directory-heading">
+    <h2 id="tools-directory-heading" class="visually-hidden">Complete Catalog of Free Online Tools</h2>
+    <div id="grid-container" class="bento-grid" role="region" aria-label="Tools Grid">
+        {% for tool in tools %}
+            {% if tool.status == 'disabled' %}
+            <article class="bento-card disabled" data-category="{{ tool.category }}" data-search="{{ tool.searchTags }}" aria-disabled="true" itemscope itemtype="https://schema.org/SoftwareApplication">
+                <meta itemprop="applicationCategory" content="UtilitiesApplication">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="tool-badge" style="background: {{ tool.badgeBg }}; color: {{ tool.badgeColor }}; border-color: {{ tool.badgeBorder }};">{{ tool.badge }}</span>
+                        <span class="time-tag">{{ tool.duration }}</span>
+                    </div>
+                    <h3 class="tool-title" itemprop="name">{{ tool.title }}</h3>
+                    <p class="tool-desc" itemprop="description">{{ tool.desc }}</p>
+                </div>
+                <div class="card-footer">
+                    <span class="metric" style="color: {{ tool.metricColor }};">
+                        <i class="{{ tool.metricIcon }}" aria-hidden="true" style="margin-right: 4px;"></i> {{ tool.friendlyMetric }}
+                    </span>
+                    <span class="open-btn orange-btn">Coming Soon <i class="fa-solid fa-lock" aria-hidden="true" style="margin-left: 4px;"></i></span>
+                </div>
+            </article>
+            {% else %}
+            <article class="bento-card" data-category="{{ tool.category }}" data-search="{{ tool.searchTags }}" itemscope itemtype="https://schema.org/SoftwareApplication">
+                <meta itemprop="applicationCategory" content="UtilitiesApplication">
+                <a href="{{ tool.actionUrl }}" class="card-link-wrapper" itemprop="url" aria-label="Launch {{ tool.title }}">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span class="tool-badge" style="background: {{ tool.badgeBg }}; color: {{ tool.badgeColor }}; border-color: {{ tool.badgeBorder }};">{{ tool.badge }}</span>
+                            <span class="time-tag">{{ tool.duration }}</span>
+                        </div>
+                        <h3 class="tool-title" itemprop="name">{{ tool.title }}</h3>
+                        <p class="tool-desc" itemprop="description">{{ tool.desc }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="metric" style="color: {{ tool.metricColor }};">
+                            <i class="{{ tool.metricIcon }}" aria-hidden="true" style="margin-right: 4px;"></i> {{ tool.friendlyMetric }}
+                        </span>
+                        <span class="open-btn">Open Tool <i class="fa-solid fa-arrow-right" aria-hidden="true" style="margin-left: 4px;"></i></span>
+                    </div>
+                </a>
+            </article>
+            {% endif %}
+        {% endfor %}
+    </div>
 
-<div id="no-results" class="empty-state hidden" aria-live="polite">
-    <i class="fa-solid fa-ghost empty-icon" aria-hidden="true"></i>
-    <p>No tools match your search criteria.</p>
-    <button onclick="clearSearchFilters()" class="premium-btn primary-btn">Reset Filters</button>
-</div>
+    <div id="no-results" class="empty-state hidden" aria-live="polite">
+        <i class="fa-solid fa-ghost empty-icon" aria-hidden="true"></i>
+        <p>No tools match your search criteria.</p>
+        <button onclick="clearSearchFilters()" class="premium-btn primary-btn">Reset Filters</button>
+    </div>
+</section>
+
+<!-- Informational & Semantic Value Section (High-volume SEO keywords & Context) -->
+<section class="seo-feature-section" aria-labelledby="features-heading">
+    <div class="section-header text-center">
+        <h2 id="features-heading" class="section-title">
+            Why Millions Choose <span class="text-gradient">DevOpsVaultX</span>
+        </h2>
+        <p class="section-subtitle">
+            Simple, private, and lightning-fast utilities designed for students, professionals, writers, and everyday web users.
+        </p>
+    </div>
+
+    <div class="features-grid">
+        <article class="feature-card glass-panel">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="feature-title">100% Private &amp; Secure</h3>
+            <p class="feature-desc">All conversions and calculations happen directly on your device. Your files, text, and passwords never leave your browser.</p>
+        </article>
+
+        <article class="feature-card glass-panel">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+                <i class="fa-solid fa-gift"></i>
+            </div>
+            <h3 class="feature-title">100% Free Forever</h3>
+            <p class="feature-desc">No paid plans, no subscription traps, and no credit card required. Use every single tool freely whenever you need it.</p>
+        </article>
+
+        <article class="feature-card glass-panel">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+                <i class="fa-solid fa-mobile-screen"></i>
+            </div>
+            <h3 class="feature-title">Works on Any Device</h3>
+            <p class="feature-desc">Clean, responsive layout optimized for mobile smartphones, iPads, tablets, laptops, and wide desktop screens.</p>
+        </article>
+    </div>
+</section>
+
+<!-- Frequently Asked Questions (FAQ) Section for Rich Search Snippets -->
+<section class="faq-section" aria-labelledby="faq-section-heading">
+    <div class="section-header text-center">
+        <h2 id="faq-section-heading" class="section-title">
+            Frequently Asked <span class="text-gradient">Questions</span>
+        </h2>
+        <p class="section-subtitle">Quick answers to common questions about DevOpsVaultX utilities.</p>
+    </div>
+
+    <div class="faq-list glass-panel">
+        <details class="faq-item" open>
+            <summary class="faq-question">What is DevOpsVaultX?</summary>
+            <div class="faq-answer">
+                <p>DevOpsVaultX is a free online tools hub created for everyday productivity. It features PDF tools (merge PDFs, image to PDF), writing utilities (word counter, text case converter), daily helpers (QR generator, password generator, percentage calculator), and technical cloud utilities.</p>
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-question">Are my files and documents uploaded to any server?</summary>
+            <div class="faq-answer">
+                <p>No. Every tool runs 100% locally in your web browser. When you merge PDFs, convert images, or generate passwords, the computation happens on your phone or computer without sending data across the internet.</p>
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-question">Do I need to sign up or create an account?</summary>
+            <div class="faq-answer">
+                <p>No registration is required. You can immediately access and use any tool without creating an account or providing an email address.</p>
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-question">Can I use these tools on my phone or tablet?</summary>
+            <div class="faq-answer">
+                <p>Yes. DevOpsVaultX is fully responsive and touch-friendly, designed to work smoothly on Android phones, iPhones, tablets, and desktop browsers.</p>
+            </div>
+        </details>
+    </div>
+</section>
 {% endblock %}

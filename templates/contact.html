@@ -1,9 +1,61 @@
 {% extends 'base.html' %}
 
-{% block head %}
-<title>Contact DevOpsVaultX - Support & Tool Suggestions</title>
-<meta name="description" content="Get in touch with the DevOpsVaultX team. Submit new tool requests or report bugs.">
+{% block title %}Contact DevOpsVaultX | Support &amp; Tool Suggestions{% endblock %}
 
+{% block description %}Contact the DevOpsVaultX team. Suggest new developer utilities, report issues, or collaborate on open-source DevOps tooling.{% endblock %}
+
+{% block keywords %}contact devopsvaultx, request devops tool, report bug, developer support, feature request{% endblock %}
+
+{% block canonical %}
+<link rel="canonical" href="https://www.devopsvaultx.com/contact/">
+{% endblock %}
+
+{% block og_title %}Contact DevOpsVaultX | Support &amp; Tool Suggestions{% endblock %}
+{% block og_description %}Submit new tool requests, report bugs, or get in touch with the DevOpsVaultX engineering team.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/contact/{% endblock %}
+
+{% block twitter_title %}Contact DevOpsVaultX | Support &amp; Tool Suggestions{% endblock %}
+{% block twitter_description %}Submit new tool requests, report bugs, or get in touch with the DevOpsVaultX engineering team.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "https://www.devopsvaultx.com/contact/#webpage",
+      "name": "Contact DevOpsVaultX",
+      "url": "https://www.devopsvaultx.com/contact/",
+      "description": "Contact the DevOpsVaultX team for developer tool suggestions and support.",
+      "breadcrumb": {
+        "@id": "https://www.devopsvaultx.com/contact/#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.devopsvaultx.com/contact/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.devopsvaultx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://www.devopsvaultx.com/contact/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block head %}
 <style>
     .terminal-container {
         width: 100%;

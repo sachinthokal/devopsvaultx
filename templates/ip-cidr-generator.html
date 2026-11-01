@@ -1,18 +1,64 @@
 {% extends 'base.html' %}
 
-{% block title %}IP CIDR Generator & Subnet Calculator | DevOpsVaultX{% endblock %}
+{% block title %}IP CIDR Subnet Calculator | Online VPC Network Tool{% endblock %}
+
+{% block description %}Free online IP CIDR subnet calculator. Calculate subnet masks, IP ranges, broadcast addresses, and usable hosts for AWS and Azure VPC networks.{% endblock %}
+
+{% block keywords %}ip cidr generator, subnet calculator, vpc subnetting, azure vnet planner, cidr blocks, networking tools, devops tools, devopsvaultx{% endblock %}
+
+{% block canonical %}
+<link rel="canonical" href="https://www.devopsvaultx.com/ip-cidr-generator/">
+{% endblock %}
+
+{% block og_title %}IP CIDR Subnet Calculator | Online Network Utilities{% endblock %}
+{% block og_description %}Calculate subnet configurations, total usable host IPs, and routing boundaries in real-time.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/ip-cidr-generator/{% endblock %}
+
+{% block twitter_title %}IP CIDR Subnet Calculator | DevOpsVaultX{% endblock %}
+{% block twitter_description %}Calculate subnet configurations, total usable host IPs, and routing boundaries in real-time.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.devopsvaultx.com/ip-cidr-generator/#app",
+      "name": "IP CIDR Generator & Subnet Calculator",
+      "url": "https://www.devopsvaultx.com/ip-cidr-generator/",
+      "description": "Calculate subnet configurations, usable host IPs, and routing boundaries for cloud VPCs.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.devopsvaultx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "IP CIDR Generator",
+          "item": "https://www.devopsvaultx.com/ip-cidr-generator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
 
 {% block head %}
-<meta name="description" content="Free online IP CIDR calculator to generate subnet masks, determine IP ranges, and calculate broadcast addresses for cloud VPCs, AWS, and Azure virtual networks.">
-<meta name="keywords" content="ip cidr generator, subnet calculator, vpc subnetting, azure vnet planner, CIDR blocks, networking tools, devopsvaultx">
-<link rel="canonical" href="https://www.devopsvaultx.com/ip-cidr-generator/">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="IP CIDR Generator & Subnet Calculator - Online Network Utilities">
-<meta property="og:description" content="Calculate subnet configurations, total usable host IPs, and explicit routing boundaries in real-time.">
-
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="IP CIDR Generator & Subnet Calculator - DevOpsVaultX">
 
 <style>
     /* Scoping container to minimize layout shifts (CLS) */

@@ -1,18 +1,64 @@
 {% extends 'base.html' %}
 
-{% block title %}Kubernetes YAML Generator - Free K8s Manifest Builder | DevOpsVaultX{% endblock %}
+{% block title %}Kubernetes YAML Generator | Free Online K8s Builder{% endblock %}
+
+{% block description %}Free online Kubernetes YAML generator. Easily build valid K8s manifests for Deployments, Services, Ingress, ConfigMaps, and Secrets in your browser.{% endblock %}
+
+{% block keywords %}kubernetes yaml generator, k8s manifest builder, deployment yaml, kubernetes service generator, ingress config, devops tools, devopsvaultx{% endblock %}
+
+{% block canonical %}
+<link rel="canonical" href="https://www.devopsvaultx.com/kubernetes-yaml-generator/">
+{% endblock %}
+
+{% block og_title %}Kubernetes YAML Generator | Free Online K8s Builder{% endblock %}
+{% block og_description %}Generate structurally accurate Kubernetes manifests for Deployments, Services, and more with real-time feedback.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/kubernetes-yaml-generator/{% endblock %}
+
+{% block twitter_title %}Kubernetes YAML Generator | DevOpsVaultX{% endblock %}
+{% block twitter_description %}Generate structurally accurate Kubernetes manifests for Deployments, Services, and more with real-time feedback.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.devopsvaultx.com/kubernetes-yaml-generator/#app",
+      "name": "Kubernetes YAML Generator",
+      "url": "https://www.devopsvaultx.com/kubernetes-yaml-generator/",
+      "description": "Free online Kubernetes YAML generator to build valid K8s manifests for Deployments, Services, Ingress, ConfigMaps, and Secrets.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.devopsvaultx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Kubernetes YAML Generator",
+          "item": "https://www.devopsvaultx.com/kubernetes-yaml-generator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
 
 {% block head %}
-<meta name="description" content="Free online Kubernetes YAML generator. Easily create valid K8s manifests for Deployments, Services, Ingress, ConfigMaps, and Secrets instantly in your browser.">
-<meta name="keywords" content="kubernetes yaml generator, k8s manifest builder, deployment yaml, kubernetes service generator, ingress config, devops tools, devopsvaultx">
-<link rel="canonical" href="https://www.devopsvaultx.com/kubernetes-yaml-generator/">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Kubernetes YAML Generator - Free Online K8s Builder">
-<meta property="og:description" content="Generate structurally accurate Kubernetes manifests for Deployments, Services, and more with real-time feedback.">
-
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Kubernetes YAML Generator - DevOpsVaultX">
 
 <style>
     /* Scoping container to minimize layout shifts (CLS) */

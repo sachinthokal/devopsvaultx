@@ -1,18 +1,64 @@
 {% extends 'base.html' %}
 
-{% block title %}Digital Unit Converter - Multi-Metric Conversion Tool | DevOpsVaultX{% endblock %}
+{% block title %}Digital Unit Converter | Byte, Storage &amp; Unit Calculator{% endblock %}
+
+{% block description %}Free online digital unit converter. Convert data storage (MB to GB), time (ms to sec), and metrics instantly with real-time browser calculation.{% endblock %}
+
+{% block keywords %}unit converter, byte converter, ms to seconds, mb to gb converter, digital storage conversion, devops tools, devopsvaultx{% endblock %}
+
+{% block canonical %}
+<link rel="canonical" href="https://www.devopsvaultx.com/digital-unit-converter/">
+{% endblock %}
+
+{% block og_title %}Digital Unit Converter | Free Multi-Unit Utility{% endblock %}
+{% block og_description %}Convert computing data, storage units, time periods, and metrics smoothly in real-time.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/digital-unit-converter/{% endblock %}
+
+{% block twitter_title %}Digital Unit Converter | DevOpsVaultX{% endblock %}
+{% block twitter_description %}Convert computing data, storage units, time periods, and metrics smoothly in real-time.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.devopsvaultx.com/digital-unit-converter/#app",
+      "name": "Digital Unit Converter",
+      "url": "https://www.devopsvaultx.com/digital-unit-converter/",
+      "description": "Convert computing data, storage units, time periods, and metrics smoothly in real-time.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.devopsvaultx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Digital Unit Converter",
+          "item": "https://www.devopsvaultx.com/digital-unit-converter/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
 
 {% block head %}
-<meta name="description" content="Free online digital unit converter. Convert data bytes (MB to GB), time (ms to sec), temperature (Celsius to Fahrenheit), length, and weight instantly with real-time calculations.">
-<meta name="keywords" content="unit converter, byte converter, ms to seconds, celsius to fahrenheit, metric imperial conversion, devops tools, devopsvaultx">
-<link rel="canonical" href="http://localhost:5000/digital-unit-converter/">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Digital Unit Converter - Free Multi-Unit Utility">
-<meta property="og:description" content="Convert computing data, time periods, metrics, and temperatures smoothly in real-time.">
-
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Digital Unit Converter - DevOpsVaultX">
 
 <style>
     /* Scoping container to minimize layout shifts (CLS) */

@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+
+{% block title %}Percentage Calculator | Free Online Percent &amp; Discount Tool{% endblock %}
+
+{% block description %}Free online percentage calculator. Calculate percentage discounts, increases, decreases, and fractions instantly with clear real-time math solutions.{% endblock %}
+
+{% block keywords %}percentage calculator, calculate percent, discount calculator, percentage increase calculator, percent math tool, fraction to percent, vaultx{% endblock %}
+
+{% block canonical %}
+<link rel="canonical" href="https://www.devopsvaultx.com/percentage-calculator/">
+{% endblock %}
+
+{% block og_title %}Percentage Calculator | Free Online Percent &amp; Discount Tool{% endblock %}
+{% block og_description %}Instant percentage math tool. Calculate discounts, fractional percentages, and value changes easily.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/percentage-calculator/{% endblock %}
+
+{% block twitter_title %}Percentage Calculator | DevOpsVaultX{% endblock %}
+{% block twitter_description %}Instant percentage math tool. Calculate discounts, fractional percentages, and value changes easily.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.devopsvaultx.com/percentage-calculator/#app",
+      "name": "Percentage Calculator",
+      "url": "https://www.devopsvaultx.com/percentage-calculator/",
+      "description": "Calculate discounts, percentage differences, and proportions instantly.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.devopsvaultx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Percentage Calculator",
+          "item": "https://www.devopsvaultx.com/percentage-calculator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block head %}
+<style>
+    .tool-container { max-width: 900px; margin: 2rem auto; padding: 2rem; border-radius: 16px; min-height: 500px; }
+    .tool-header { margin-bottom: 2rem; text-align: center; }
+    .percent-badge { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); color: #f59e0b; }
+
+    .calc-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+    .calc-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--panel-border);
+        border-radius: 12px;
+        padding: 1.5rem;
+    }
+    .calc-title { font-size: 1.05rem; font-weight: 700; color: #f59e0b; margin-bottom: 1rem; }
+    .calc-row { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .calc-input {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid var(--panel-border);
+        color: var(--text-main);
+        padding: 0.6rem 0.8rem;
+        border-radius: 8px;
+        font-size: 1.05rem;
+        width: 110px;
+        text-align: center;
+        outline: none;
+    }
+    .calc-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); }
+    .calc-result {
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: #10b981;
+        padding: 0.6rem 1.25rem;
+        border-radius: 8px;
+        font-weight: 800;
+        font-size: 1.15rem;
+        margin-left: auto;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<nav aria-label="Breadcrumb" class="breadcrumb-nav" style="margin-top: 1.5rem; margin-bottom: 1rem;">
+    <ol style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem; color: var(--text-muted);">
+        <li><a href="/" style="color: var(--primary);">Home</a></li>
+        <li aria-hidden="true">&gt;</li>
+        <li aria-current="page" style="color: var(--text-main);">Percentage Calculator</li>
+    </ol>
+</nav>
+
+<section class="glass-panel tool-container" aria-labelledby="tool-title">
+    <div class="tool-header">
+        <div class="status-badge percent-badge">
+            <span class="status-dot" style="background: #f59e0b;"></span> 🧮 Fast Everyday Math
+        </div>
+        <h1 id="tool-title" class="hero-title" style="font-size: clamp(1.8rem, 4vw, 2.5rem);">
+            Percentage <span class="text-gradient">Calculator</span>
+        </h1>
+        <p class="tool-desc">Quickly solve everyday percentage calculations, store discounts, and relative value increases in real-time.</p>
+    </div>
+
+    <div class="calc-grid">
+        <!-- Calculator 1: What is X% of Y? -->
+        <div class="calc-card">
+            <h2 class="calc-title">1. What is X% of Y? (e.g. Sales tax, discounts)</h2>
+            <div class="calc-row">
+                <span>What is</span>
+                <input type="number" id="p1_x" class="calc-input" value="15" oninput="calc1()">
+                <span>% of</span>
+                <input type="number" id="p1_y" class="calc-input" value="200" oninput="calc1()">
+                <span>=</span>
+                <span id="p1_res" class="calc-result">30</span>
+            </div>
+        </div>
+
+        <!-- Calculator 2: X is what % of Y? -->
+        <div class="calc-card">
+            <h2 class="calc-title">2. X is what percent of Y? (e.g. Test scores, portions)</h2>
+            <div class="calc-row">
+                <input type="number" id="p2_x" class="calc-input" value="45" oninput="calc2()">
+                <span>is what percent of</span>
+                <input type="number" id="p2_y" class="calc-input" value="60" oninput="calc2()">
+                <span>=</span>
+                <span id="p2_res" class="calc-result">75%</span>
+            </div>
+        </div>
+
+        <!-- Calculator 3: Percentage increase / decrease -->
+        <div class="calc-card">
+            <h2 class="calc-title">3. Percentage Increase or Decrease</h2>
+            <div class="calc-row">
+                <span>From</span>
+                <input type="number" id="p3_x" class="calc-input" value="100" oninput="calc3()">
+                <span>to</span>
+                <input type="number" id="p3_y" class="calc-input" value="150" oninput="calc3()">
+                <span>=</span>
+                <span id="p3_res" class="calc-result">+50%</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function calc1() {
+        const x = parseFloat(document.getElementById('p1_x').value);
+        const y = parseFloat(document.getElementById('p1_y').value);
+        const resSpan = document.getElementById('p1_res');
+
+        if (isNaN(x) || isNaN(y)) {
+            resSpan.textContent = '—';
+            return;
+        }
+        const result = (x / 100) * y;
+        resSpan.textContent = Number.isInteger(result) ? result : result.toFixed(2);
+    }
+
+    function calc2() {
+        const x = parseFloat(document.getElementById('p2_x').value);
+        const y = parseFloat(document.getElementById('p2_y').value);
+        const resSpan = document.getElementById('p2_res');
+
+        if (isNaN(x) || isNaN(y) || y === 0) {
+            resSpan.textContent = '—';
+            return;
+        }
+        const result = (x / y) * 100;
+        resSpan.textContent = (Number.isInteger(result) ? result : result.toFixed(2)) + '%';
+    }
+
+    function calc3() {
+        const x = parseFloat(document.getElementById('p3_x').value);
+        const y = parseFloat(document.getElementById('p3_y').value);
+        const resSpan = document.getElementById('p3_res');
+
+        if (isNaN(x) || isNaN(y) || x === 0) {
+            resSpan.textContent = '—';
+            return;
+        }
+        const diff = y - x;
+        const percent = (diff / Math.abs(x)) * 100;
+        const sign = percent > 0 ? '+' : '';
+        resSpan.textContent = sign + (Number.isInteger(percent) ? percent : percent.toFixed(2)) + '%';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        calc1();
+        calc2();
+        calc3();
+    });
+</script>
+{% endblock %}
+

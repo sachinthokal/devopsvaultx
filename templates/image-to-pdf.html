@@ -1,0 +1,320 @@
+{% extends 'base.html' %}
+
+{% block title %}Image to PDF Converter | Turn JPG &amp; PNG to PDF Free{% endblock %}
+
+{% block description %}Convert JPG, PNG, and photos to PDF online for free. Combine multiple pictures into a single clean PDF document instantly with zero server uploads.{% endblock %}
+
+{% block keywords %}image to pdf, jpg to pdf, png to pdf, photo to pdf converter, convert picture to pdf, free pdf creator, vaultx{% endblock %}
+
+{% block canonical %}
+<link rel="canonical" href="https://www.devopsvaultx.com/image-to-pdf/">
+{% endblock %}
+
+{% block og_title %}Image to PDF Converter | Turn Photos to PDF Online{% endblock %}
+{% block og_description %}Convert JPG, PNG, and photos into a clean PDF document in seconds. 100% private and free.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/image-to-pdf/{% endblock %}
+
+{% block twitter_title %}Image to PDF Converter | DevOpsVaultX{% endblock %}
+{% block twitter_description %}Convert JPG, PNG, and photos into a clean PDF document in seconds. 100% private and free.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.devopsvaultx.com/image-to-pdf/#app",
+      "name": "Image to PDF Converter",
+      "url": "https://www.devopsvaultx.com/image-to-pdf/",
+      "description": "Convert JPG, PNG, and pictures into a single PDF document in your browser.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.devopsvaultx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Image to PDF Converter",
+          "item": "https://www.devopsvaultx.com/image-to-pdf/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block head %}
+<style>
+    .tool-container { max-width: 900px; margin: 2rem auto; padding: 2rem; border-radius: 16px; min-height: 500px; }
+    .tool-header { margin-bottom: 2rem; text-align: center; }
+    .pdf-badge { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+    .drop-zone {
+        border: 2px dashed var(--panel-border);
+        border-radius: 14px;
+        padding: 3rem 1.5rem;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.02);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .drop-zone:hover, .drop-zone.dragover { border-color: #ef4444; background: rgba(239, 68, 68, 0.05); }
+    .drop-zone-icon { font-size: 3rem; color: #ef4444; margin-bottom: 1rem; }
+    .drop-zone-text { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .drop-zone-subtext { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* Photo Grid Preview */
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    .image-card {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid var(--panel-border);
+        border-radius: 8px;
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+    .image-preview {
+        width: 100%;
+        height: 110px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+    .image-name {
+        font-size: 0.75rem;
+        margin-top: 0.4rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        text-align: center;
+    }
+    .remove-img-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(239, 68, 68, 0.85);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+    }
+    .remove-img-btn:hover { background: #dc2626; }
+
+    .convert-actions { margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<nav aria-label="Breadcrumb" class="breadcrumb-nav" style="margin-top: 1.5rem; margin-bottom: 1rem;">
+    <ol style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem; color: var(--text-muted);">
+        <li><a href="/" style="color: var(--primary);">Home</a></li>
+        <li aria-hidden="true">&gt;</li>
+        <li aria-current="page" style="color: var(--text-main);">Image to PDF</li>
+    </ol>
+</nav>
+
+<section class="glass-panel tool-container" aria-labelledby="tool-title">
+    <div class="tool-header">
+        <div class="status-badge pdf-badge">
+            <span class="status-dot" style="background: #ef4444;"></span> 🖼️ Photo to PDF
+        </div>
+        <h1 id="tool-title" class="hero-title" style="font-size: clamp(1.8rem, 4vw, 2.5rem);">
+            Image to PDF <span class="text-gradient">Converter</span>
+        </h1>
+        <p class="tool-desc">Turn JPG, PNG, and photo files into a single high-quality PDF document. Fast, private, and free.</p>
+    </div>
+
+    <!-- Drop Zone -->
+    <div class="drop-zone" id="dropZone" onclick="document.getElementById('imageInput').click()" role="button" tabindex="0" aria-label="Upload photos">
+        <i class="fa-solid fa-images drop-zone-icon" aria-hidden="true"></i>
+        <p class="drop-zone-text">Click or Drag &amp; Drop Images Here</p>
+        <p class="drop-zone-subtext">Supports JPG, PNG, WebP photos. Instant client-side conversion.</p>
+        <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp" multiple style="display: none;" onchange="handleImageSelect(event)">
+    </div>
+
+    <!-- Image Preview Grid -->
+    <div id="imageGrid" class="image-grid" aria-live="polite"></div>
+
+    <!-- Action Button -->
+    <div class="convert-actions">
+        <button id="convertBtn" class="premium-btn primary-btn" onclick="convertImagesToPDF()" style="padding: 0.85rem 2.5rem; font-size: 1.05rem;" disabled>
+            <i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Convert &amp; Download PDF
+        </button>
+        <div id="statusMessage" class="status-alert text-gradient hidden"></div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js" crossorigin="anonymous"></script>
+<script>
+    let imageFiles = [];
+    const dropZone = document.getElementById('dropZone');
+    const convertBtn = document.getElementById('convertBtn');
+    const imageGrid = document.getElementById('imageGrid');
+    const statusMsg = document.getElementById('statusMessage');
+
+    ['dragenter', 'dragover'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+    });
+
+    ['dragleave', 'drop'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+        });
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+        if (files.length > 0) addImages(files);
+    });
+
+    function handleImageSelect(e) {
+        const files = Array.from(e.target.files).filter(f => f.type.startsWith('image/'));
+        if (files.length > 0) addImages(files);
+        e.target.value = '';
+    }
+
+    function addImages(files) {
+        imageFiles = [...imageFiles, ...files];
+        renderImageGrid();
+    }
+
+    function removeImage(idx) {
+        imageFiles.splice(idx, 1);
+        renderImageGrid();
+    }
+
+    function renderImageGrid() {
+        imageGrid.innerHTML = '';
+        convertBtn.disabled = imageFiles.length === 0;
+
+        imageFiles.forEach((file, idx) => {
+            const card = document.createElement('div');
+            card.className = 'image-card';
+            
+            const img = document.createElement('img');
+            img.className = 'image-preview';
+            img.src = URL.createObjectURL(file);
+            img.alt = file.name;
+
+            const name = document.createElement('span');
+            name.className = 'image-name';
+            name.textContent = file.name;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'remove-img-btn';
+            removeBtn.innerHTML = '&times;';
+            removeBtn.onclick = () => removeImage(idx);
+
+            card.appendChild(removeBtn);
+            card.appendChild(img);
+            card.appendChild(name);
+            imageGrid.appendChild(card);
+        });
+    }
+
+    // Convert helper to get clean PNG bytes via Canvas for WebP or unusual formats
+    async function fileToStandardBytes(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    canvas.toBlob((blob) => {
+                        blob.arrayBuffer().then(buf => resolve({ bytes: buf, isPng: true, width: img.width, height: img.height }));
+                    }, 'image/png');
+                };
+                img.onerror = reject;
+                img.src = e.target.result;
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
+
+    async function convertImagesToPDF() {
+        if (imageFiles.length === 0) return;
+
+        try {
+            convertBtn.disabled = true;
+            statusMsg.classList.remove('hidden');
+            statusMsg.textContent = '⏳ Generating your PDF document...';
+
+            const { PDFDocument } = PDFLib;
+            const pdfDoc = await PDFDocument.create();
+
+            for (const file of imageFiles) {
+                const { bytes, isPng, width, height } = await fileToStandardBytes(file);
+                const embeddedImage = await pdfDoc.embedPng(bytes);
+
+                // Add standard A4 / fitting page
+                const page = pdfDoc.addPage([width, height]);
+                page.drawImage(embeddedImage, {
+                    x: 0,
+                    y: 0,
+                    width: width,
+                    height: height,
+                });
+            }
+
+            const pdfBytes = await pdfDoc.save();
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = url;
+            downloadLink.download = `images-to-pdf-${Date.now()}.pdf`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(url);
+
+            statusMsg.textContent = '✅ Success! Your PDF has been downloaded.';
+            convertBtn.disabled = false;
+        } catch (err) {
+            console.error(err);
+            statusMsg.textContent = '❌ An error occurred during conversion.';
+            convertBtn.disabled = false;
+        }
+    }
+</script>
+{% endblock %}
+

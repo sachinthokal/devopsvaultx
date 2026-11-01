@@ -1,10 +1,64 @@
 {% extends 'base.html' %}
 
-{% block title %}Text Case Converter - Uppercase, Lowercase, Title Case | DevOpsVaultX{% endblock %}
+{% block title %}Text Case Converter | String Manipulation Utility{% endblock %}
+
+{% block description %}Free online text case converter. Transform text into UPPERCASE, lowercase, Title Case, camelCase, snake_case, and kebab-case instantly in-browser.{% endblock %}
+
+{% block keywords %}text case converter, string manipulation, lowercase to uppercase, camelcase converter, title case generator, devops tools, devopsvaultx{% endblock %}
+
+{% block canonical %}
+<link rel="canonical" href="https://www.devopsvaultx.com/text-case-converter/">
+{% endblock %}
+
+{% block og_title %}Text Case Converter | String Manipulation Utility{% endblock %}
+{% block og_description %}Transform text into UPPERCASE, lowercase, Title Case, camelCase, and alternating case instantly.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/text-case-converter/{% endblock %}
+
+{% block twitter_title %}Text Case Converter | DevOpsVaultX{% endblock %}
+{% block twitter_description %}Transform text into UPPERCASE, lowercase, Title Case, camelCase, and alternating case instantly.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.devopsvaultx.com/text-case-converter/#app",
+      "name": "Text Case Converter",
+      "url": "https://www.devopsvaultx.com/text-case-converter/",
+      "description": "Free online text case converter tool to manipulate strings into various cases.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.devopsvaultx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Text Case Converter",
+          "item": "https://www.devopsvaultx.com/text-case-converter/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
 
 {% block head %}
-<!-- SEO & CSS -->
-<meta name="description" content="Free online text case converter tool. Quickly transform your strings into uppercase, lowercase, title case, and more.">
 <style>
     .tool-container { max-width: 900px; margin: 2rem auto; padding: 2rem; border-radius: 16px; }
     .tool-header { margin-bottom: 2rem; text-align: center; }

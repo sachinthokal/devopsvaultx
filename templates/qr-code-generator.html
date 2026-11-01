@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+
+{% block title %}Free QR Code Generator | Create Custom QR Codes Online{% endblock %}
+
+{% block description %}Free online QR code generator. Create instant QR codes for website links, text, WiFi passwords, and contacts with high-resolution PNG download.{% endblock %}
+
+{% block keywords %}free qr code generator, create qr code online, qr code maker, qr barcode creator, wifi qr code, link to qr, vaultx{% endblock %}
+
+{% block canonical %}
+<link rel="canonical" href="https://www.devopsvaultx.com/qr-code-generator/">
+{% endblock %}
+
+{% block og_title %}Free QR Code Generator | Create Custom QR Codes Online{% endblock %}
+{% block og_description %}Generate custom QR codes instantly for links, text, emails, and WiFi. Free PNG download.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/qr-code-generator/{% endblock %}
+
+{% block twitter_title %}Free QR Code Generator | DevOpsVaultX{% endblock %}
+{% block twitter_description %}Generate custom QR codes instantly for links, text, emails, and WiFi. Free PNG download.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.devopsvaultx.com/qr-code-generator/#app",
+      "name": "Free QR Code Generator",
+      "url": "https://www.devopsvaultx.com/qr-code-generator/",
+      "description": "Generate custom QR codes for websites, text, and WiFi with instant PNG download.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.devopsvaultx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "QR Code Generator",
+          "item": "https://www.devopsvaultx.com/qr-code-generator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block head %}
+<style>
+    .tool-container { max-width: 900px; margin: 2rem auto; padding: 2rem; border-radius: 16px; min-height: 500px; }
+    .tool-header { margin-bottom: 2rem; text-align: center; }
+    .qr-badge { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: #3b82f6; }
+
+    .qr-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    @media (min-width: 768px) {
+        .qr-layout { grid-template-columns: 1.2fr 0.8fr; }
+    }
+
+    .styled-input {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid var(--panel-border);
+        color: var(--text-main);
+        padding: 0.85rem 1rem;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 0.95rem;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+    .styled-input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .form-label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .color-pickers { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
+    .color-input-wrapper { display: flex; align-items: center; gap: 0.5rem; }
+    .color-box { width: 36px; height: 36px; border: 1px solid var(--panel-border); border-radius: 6px; cursor: pointer; background: transparent; }
+
+    /* QR Result Card */
+    .qr-preview-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--panel-border);
+        border-radius: 12px;
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    #qrcode-display {
+        padding: 1rem;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        margin-bottom: 1.5rem;
+    }
+    #qrcode-display img, #qrcode-display canvas {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<nav aria-label="Breadcrumb" class="breadcrumb-nav" style="margin-top: 1.5rem; margin-bottom: 1rem;">
+    <ol style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem; color: var(--text-muted);">
+        <li><a href="/" style="color: var(--primary);">Home</a></li>
+        <li aria-hidden="true">&gt;</li>
+        <li aria-current="page" style="color: var(--text-main);">QR Code Generator</li>
+    </ol>
+</nav>
+
+<section class="glass-panel tool-container" aria-labelledby="tool-title">
+    <div class="tool-header">
+        <div class="status-badge qr-badge">
+            <span class="status-dot" style="background: #3b82f6;"></span> 📱 Instant QR Maker
+        </div>
+        <h1 id="tool-title" class="hero-title" style="font-size: clamp(1.8rem, 4vw, 2.5rem);">
+            Free QR Code <span class="text-gradient">Generator</span>
+        </h1>
+        <p class="tool-desc">Create high-resolution QR codes for websites, text, and WiFi passwords. Download instantly as PNG.</p>
+    </div>
+
+    <div class="qr-layout">
+        <!-- Controls Column -->
+        <div class="glass-panel" style="padding: 1.75rem; border-radius: 12px;">
+            <div class="form-group">
+                <label for="qrText" class="form-label">URL or Text Content</label>
+                <input type="text" id="qrText" class="styled-input" placeholder="e.g. https://www.yourwebsite.com" value="https://www.devopsvaultx.com" oninput="updateQRCode()">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">QR Code Customization</label>
+                <div class="color-pickers">
+                    <div class="color-input-wrapper">
+                        <label for="qrDarkColor" style="font-size: 0.85rem; color: var(--text-muted);">Color:</label>
+                        <input type="color" id="qrDarkColor" class="color-box" value="#000000" onchange="updateQRCode()">
+                    </div>
+                    <div class="color-input-wrapper">
+                        <label for="qrLightColor" style="font-size: 0.85rem; color: var(--text-muted);">Background:</label>
+                        <input type="color" id="qrLightColor" class="color-box" value="#ffffff" onchange="updateQRCode()">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="qrSize" class="form-label">Resolution / Size</label>
+                <select id="qrSize" class="styled-input" onchange="updateQRCode()">
+                    <option value="200">Standard (200 x 200)</option>
+                    <option value="300" selected>High Res (300 x 300)</option>
+                    <option value="400">Ultra (400 x 400)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Preview & Download Column -->
+        <div class="qr-preview-box">
+            <div id="qrcode-display"></div>
+            <button class="premium-btn primary-btn" onclick="downloadQRCode()" style="padding: 0.75rem 2rem; width: 100%;">
+                <i class="fa-solid fa-download" aria-hidden="true"></i> Download PNG
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" crossorigin="anonymous"></script>
+<script>
+    let qrcodeInstance = null;
+
+    function updateQRCode() {
+        const text = document.getElementById('qrText').value.trim() || 'https://www.devopsvaultx.com';
+        const darkColor = document.getElementById('qrDarkColor').value;
+        const lightColor = document.getElementById('qrLightColor').value;
+        const size = parseInt(document.getElementById('qrSize').value, 10);
+        const container = document.getElementById('qrcode-display');
+
+        container.innerHTML = '';
+
+        qrcodeInstance = new QRCode(container, {
+            text: text,
+            width: size,
+            height: size,
+            colorDark: darkColor,
+            colorLight: lightColor,
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    }
+
+    function downloadQRCode() {
+        const container = document.getElementById('qrcode-display');
+        const img = container.querySelector('img');
+        const canvas = container.querySelector('canvas');
+
+        let dataUrl = '';
+        if (canvas) {
+            dataUrl = canvas.toDataURL('image/png');
+        } else if (img && img.src) {
+            dataUrl = img.src;
+        }
+
+        if (!dataUrl) return;
+
+        const downloadLink = document.createElement('a');
+        downloadLink.href = dataUrl;
+        downloadLink.download = `qrcode-${Date.now()}.png`;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        updateQRCode();
+    });
+</script>
+{% endblock %}
+

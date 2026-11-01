@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}404 - Page Not Found | DevOpsVaultX{% endblock %}
+
+{% block description %}The page you are looking for does not exist or has been moved. Explore DevOpsVaultX's free online daily tools for everyone.{% endblock %}
+
+{% block canonical %}
+<meta name="robots" content="noindex, follow">
+{% endblock %}
+
+{% block content %}
+<section class="tool-view-container" style="text-align: center; padding: 4rem 1rem; max-width: 720px; margin: 0 auto;">
+    <div style="font-size: clamp(4rem, 10vw, 7rem); font-weight: 800; line-height: 1; margin-bottom: 1rem; background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        404
+    </div>
+    
+    <h1 style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 700; margin-bottom: 1rem; color: var(--text-main);">
+        Page Not Found
+    </h1>
+    
+    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 2.5rem;">
+        The tool or page you requested might have been moved, renamed, or is temporarily unavailable. Don't worry — all our free daily tools are ready for you.
+    </p>
+
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+        <a href="/" class="premium-btn primary-btn" style="text-decoration: none; padding: 0.85rem 2rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-house" aria-hidden="true"></i> Back to Homepage
+        </a>
+        <a href="/sitemap/" class="premium-btn secondary-btn" style="text-decoration: none; padding: 0.85rem 2rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-sitemap" aria-hidden="true"></i> View All Tools
+        </a>
+    </div>
+
+    <div class="tool-card" style="padding: 1.75rem; text-align: left; background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 12px;">
+        <h2 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main);">
+            <i class="fa-solid fa-fire" style="color: #f59e0b; margin-right: 0.5rem;" aria-hidden="true"></i> Popular Tools You Might Need:
+        </h2>
+        <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+            <li><a href="/merge-pdf/" style="color: #818cf8; text-decoration: none;"><i class="fa-solid fa-file-pdf" style="margin-right: 0.4rem;"></i> Merge PDF</a></li>
+            <li><a href="/image-to-pdf/" style="color: #818cf8; text-decoration: none;"><i class="fa-solid fa-images" style="margin-right: 0.4rem;"></i> Image to PDF</a></li>
+            <li><a href="/word-counter/" style="color: #818cf8; text-decoration: none;"><i class="fa-solid fa-file-lines" style="margin-right: 0.4rem;"></i> Word Counter</a></li>
+            <li><a href="/qr-code-generator/" style="color: #818cf8; text-decoration: none;"><i class="fa-solid fa-qrcode" style="margin-right: 0.4rem;"></i> QR Code Generator</a></li>
+            <li><a href="/password-generator/" style="color: #818cf8; text-decoration: none;"><i class="fa-solid fa-key" style="margin-right: 0.4rem;"></i> Strong Password Generator</a></li>
+            <li><a href="/percentage-calculator/" style="color: #818cf8; text-decoration: none;"><i class="fa-solid fa-percent" style="margin-right: 0.4rem;"></i> Percentage Calculator</a></li>
+        </ul>
+    </div>
+</section>
+{% endblock %}
+

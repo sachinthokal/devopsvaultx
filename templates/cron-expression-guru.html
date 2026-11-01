@@ -1,18 +1,64 @@
 {% extends 'base.html' %}
 
-{% block title %}Cron Expression Guru - Free Online Cron Generator & Parser | DevOpsVaultX{% endblock %}
+{% block title %}Cron Expression Guru | Free Crontab Generator &amp; Parser{% endblock %}
+
+{% block description %}Free online cron expression generator, parser, and validator. Convert crontab schedules to plain readable English and view next run times instantly.{% endblock %}
+
+{% block keywords %}cron expression guru, cron generator, crontab parser, linux cron schedule, cron validator, devops tools, devopsvaultx{% endblock %}
+
+{% block canonical %}
+<link rel="canonical" href="https://www.devopsvaultx.com/cron-expression-guru/">
+{% endblock %}
+
+{% block og_title %}Cron Expression Guru | Free Crontab Generator &amp; Parser{% endblock %}
+{% block og_description %}Convert complex crontab schedules into human-readable text and view next execution dates instantly.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/cron-expression-guru/{% endblock %}
+
+{% block twitter_title %}Cron Expression Guru | DevOpsVaultX{% endblock %}
+{% block twitter_description %}Convert complex crontab schedules into human-readable text and view next execution dates instantly.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.devopsvaultx.com/cron-expression-guru/#app",
+      "name": "Cron Expression Guru",
+      "url": "https://www.devopsvaultx.com/cron-expression-guru/",
+      "description": "Free online cron expression generator and parser for DevOps engineers and sysadmins.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.devopsvaultx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cron Expression Guru",
+          "item": "https://www.devopsvaultx.com/cron-expression-guru/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
 
 {% block head %}
-<meta name="description" content="Free online tool to generate, translate, and validate Linux cron expressions. Convert crontab schedules into human-readable text and view next execution dates instantly.">
-<meta name="keywords" content="cron expression guru, cron generator, crontab parser, linux automation, cron jobs scheduling, devops tools, devopsvaultx">
-<link rel="canonical" href="https://devopsvaultx.com/cron-expression-guru/">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Cron Expression Guru - Free Online Cron Generator & Parser">
-<meta property="og:description" content="Convert complex crontab schedules into human-readable text and view next execution dates instantly.">
-
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Cron Expression Guru - Free Online Cron Generator & Parser">
 
 <style>
     /* Scoping container to minimize layout shifts (CLS) */
