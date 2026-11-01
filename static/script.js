@@ -13,18 +13,18 @@ window.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
 });
 
-// Setup mouse tracking glow effect on bento cards
+// Setup mouse tracking glow effect on bento cards with single passive event delegation
 function initCards() {
-    const cards = document.querySelectorAll('.bento-card');
-    cards.forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-    });
+    const grid = document.getElementById('grid-container');
+    if (!grid) return;
+
+    grid.addEventListener('mousemove', e => {
+        const card = e.target.closest('.bento-card');
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    }, { passive: true });
 }
 
 // Category selection with URL hash state for SEO deep-linking
@@ -51,12 +51,12 @@ function setCategory(category) {
     filterHub();
 }
 
-// Filter cards instantly based on active category and user search input
+// Filter cards instantly based on active category and user search input (Zero Forced Reflow)
 function filterHub() {
     const searchInput = document.getElementById('engine-search');
     const noResults = document.getElementById('no-results');
     
-    if (!searchInput || !noResults) return;
+    if (!searchInput) return;
 
     const query = searchInput.value.toLowerCase().trim();
     const cards = document.querySelectorAll('.bento-card');
@@ -65,14 +65,9 @@ function filterHub() {
     cards.forEach(card => {
         const cardCat = card.getAttribute('data-category');
         const cardMeta = (card.getAttribute('data-search') || '').toLowerCase();
-        const cardTitle = (card.querySelector('.tool-title')?.textContent || '').toLowerCase();
-        const cardDesc = (card.querySelector('.tool-desc')?.textContent || '').toLowerCase();
 
         const matchesCat = (currentCategory === 'all' || cardCat === currentCategory);
-        const matchesSearch = query === '' || 
-                              cardMeta.includes(query) || 
-                              cardTitle.includes(query) || 
-                              cardDesc.includes(query);
+        const matchesSearch = query === '' || cardMeta.includes(query);
 
         if (matchesCat && matchesSearch) {
             card.classList.remove('hidden');
@@ -82,7 +77,9 @@ function filterHub() {
         }
     });
 
-    noResults.classList.toggle('hidden', matchedCount !== 0);
+    if (noResults) {
+        noResults.classList.toggle('hidden', matchedCount !== 0);
+    }
 }
 
 // Clear all active filters and reset view

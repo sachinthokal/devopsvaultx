@@ -1,3 +1,19 @@
+/* --- Font Awesome Webfonts with font-display: swap (Eliminates FCP font blocking delay) --- */
+@font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-solid-900.woff2") format("woff2");
+}
+@font-face {
+    font-family: 'Font Awesome 6 Brands';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-brands-400.woff2") format("woff2");
+}
+
 /* --- CSS Variables --- */
 :root {
     --bg-base: #03050a;
@@ -579,6 +595,7 @@ button {
 .heartbeat {
     color: var(--danger);
     display: inline-block;
+    transform-origin: center center;
     will-change: transform;
     animation: heartbeat 1.5s ease-in-out infinite both;
 }
@@ -599,7 +616,6 @@ button {
 @keyframes heartbeat {
     from {
         transform: scale(1);
-        transform-origin: center center;
         animation-timing-function: ease-out;
     }
 
