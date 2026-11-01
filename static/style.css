@@ -127,12 +127,14 @@ button {
     justify-content: space-between;
     align-items: center;
     gap: 1.5rem;
+    position: relative;
+    width: 100%;
 }
 
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 /* Nav Link Styling */
@@ -163,6 +165,29 @@ button {
 
 .nav-link:hover::after {
     width: 100%;
+}
+
+/* Mobile Menu Toggle Button (Default hidden on desktop) */
+.mobile-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    color: var(--text-main);
+    font-size: 1.15rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.mobile-menu-toggle:hover,
+.mobile-menu-toggle.active {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--primary);
+    color: #818cf8;
 }
 
 .logo-group {
@@ -213,29 +238,6 @@ button {
 .highlight-x {
     color: var(--danger);
     text-shadow: 0 0 15px rgba(255, 42, 95, 0.6);
-}
-
-/* --- 🟢 RESPONSIVE NAV MEDIA QUERIES --- */
-@media (max-width: 600px) {
-    .nav-content {
-        flex-direction: column;
-        gap: 0.75rem;
-        text-align: center;
-    }
-
-    .nav-actions {
-        gap: 1.2rem;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .youtube-btn span {
-        display: none;
-    }
-
-    .premium-btn {
-        padding: 0.5rem 0.6rem;
-    }
 }
 
 /* --- Buttons --- */
@@ -640,61 +642,288 @@ button {
     background: var(--primary);
 }
 
-/* --- 🟢 RESPONSIVE MEDIA QUERIES --- */
-@media (max-width: 768px) {
+/* ==========================================================================
+   Comprehensive Multi-Screen Responsiveness (Mobile, Tablet, Desktop, 4K)
+   ========================================================================== */
+
+/* Animation for Mobile Navigation Drawer */
+@keyframes navSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tablet & Mobile Breakpoint (<= 880px) */
+@media (max-width: 880px) {
+    /* Header & Navigation: Collapse to sleek mobile bar with hamburger */
+    .mobile-menu-toggle {
+        display: inline-flex;
+    }
+
+    .nav-actions {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.6rem);
+        left: 0;
+        right: 0;
+        background: rgba(10, 14, 26, 0.98);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid var(--panel-border);
+        border-radius: 14px;
+        padding: 1rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.4rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+    }
+
+    .nav-actions.active {
+        display: flex;
+        animation: navSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .nav-actions .nav-link {
+        padding: 0.75rem 1rem;
+        font-size: 0.92rem;
+        color: var(--text-muted);
+        border-radius: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .nav-actions .nav-link:hover {
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--text-main);
+    }
+
+    .nav-actions .nav-link::after {
+        display: none;
+    }
+
+    .nav-actions .youtube-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.4rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .nav-actions .youtube-btn span {
+        display: inline !important;
+    }
+
+    /* Control Panel: Horizontal Scrollable Category Pills */
     .control-panel {
         flex-direction: column;
         align-items: stretch;
-        padding: 1rem;
+        padding: 0.75rem;
+        gap: 0.75rem;
+        margin-bottom: 1.75rem;
     }
 
     .tabs {
-        justify-content: center;
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 0.25rem 0.15rem 0.5rem 0.15rem;
+        width: 100%;
+    }
+
+    .tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        padding: 0.55rem 0.95rem;
+        font-size: 0.85rem;
+        border-radius: 10px;
     }
 
     .search-box {
         max-width: 100%;
-        margin-top: 0.5rem;
+        width: 100%;
     }
 
-    /* Footer stacking nicely on tablets */
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+/* Smartphone & Compact Screen Breakpoint (<= 640px) */
+@media (max-width: 640px) {
+    .container {
+        padding: 0 0.85rem;
+    }
+
+    /* Hero Section Optimization */
+    .hero-section {
+        padding: 1.5rem 0 0.75rem 0;
+    }
+
+    .status-badge {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.8rem;
+        margin-bottom: 0.85rem;
+        line-height: 1.35;
+        white-space: normal;
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: clamp(1.45rem, 5.5vw, 2.1rem);
+        line-height: 1.25;
+        margin-bottom: 0.65rem;
+    }
+
+    .typing-banner {
+        font-size: 0.88rem;
+        line-height: 1.5;
+        padding: 0 0.25rem;
+    }
+
+    /* Bento Grid: 1 Clean Full-Width Column */
+    .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .bento-card {
+        padding: 1.2rem;
+        border-radius: 16px;
+    }
+
+    .tool-title {
+        font-size: 1.15rem;
+    }
+
+    .tool-desc {
+        font-size: 0.85rem;
+    }
+
+    /* Tool Pages (Universal Container & Elements) */
+    .tool-container {
+        margin: 1rem auto !important;
+        padding: 1.25rem 0.85rem !important;
+        border-radius: 12px !important;
+    }
+
+    .drop-zone {
+        padding: 2rem 1rem !important;
+    }
+
+    .drop-zone-icon {
+        font-size: 2.2rem !important;
+    }
+
+    .drop-zone-text {
+        font-size: 1rem !important;
+    }
+
+    .file-item {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 0.5rem;
+    }
+
+    .file-info {
+        max-width: 100% !important;
+    }
+
+    .file-name {
+        max-width: 100% !important;
+        white-space: normal !important;
+        word-break: break-all;
+    }
+
+    .file-actions {
+        justify-content: flex-end;
+    }
+
+    .stats-dashboard {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.6rem !important;
+    }
+
+    .calc-row {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+
+    .calc-input {
+        width: 100% !important;
+    }
+
+    .calc-result {
+        margin-left: 0 !important;
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .password-display-box {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .password-text {
+        font-size: 1.2rem !important;
+    }
+
+    /* Footer: Responsive Wrap */
     .divider {
         display: none;
+    }
+
+    .footer-nav {
+        gap: 0.45rem 0.7rem;
+        font-size: 0.8rem;
     }
 
     .footer-center p {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.35rem;
+        font-size: 0.78rem;
     }
 }
 
-@media (max-width: 480px) {
-    /* Optimize header for very small screens */
-    .glass-nav {
-        padding: 0.75rem 0;
+/* Very Small Mobile (<= 360px - iPhone SE, Galaxy Fold) */
+@media (max-width: 360px) {
+    .logo-text {
+        font-size: 1.12rem;
     }
 
-    .premium-btn {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.75rem;
+    .logo-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
     }
 
-    /* Tabs stacking logic on tiny screens */
     .tab-btn {
-        flex: 1 1 calc(50% - 0.5rem);
-        text-align: center;
-        padding: 0.5rem;
+        padding: 0.45rem 0.8rem;
+        font-size: 0.78rem;
     }
 
-    /* Cards optimization */
-    .bento-card {
-        padding: 1.25rem;
-    }
-
-    .tool-title {
-        font-size: 1.15rem;
+    .hero-title {
+        font-size: 1.35rem;
     }
 }
 
