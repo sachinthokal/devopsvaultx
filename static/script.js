@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     initCards();
     checkUrlParams();
     setupTypingEffect();
+    initMobileMenu();
 });
 
 // Setup mouse tracking glow effect on bento cards
@@ -118,4 +119,48 @@ function checkUrlParams() {
 // Pre-rendered banner subtitle - preserves 0.000 CLS and zero main-thread overhead
 function setupTypingEffect() {
     // Text is pre-rendered statically in the HTML to guarantee 0.000 CLS.
+}
+
+// -----------------------------------------------------------------------------
+// Seamless Mobile Navigation Toggle & Drawer Handler
+// -----------------------------------------------------------------------------
+function initMobileMenu() {
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const navActions = document.getElementById('mainNavActions');
+    if (!toggleBtn || !navActions) return;
+
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navActions.classList.toggle('active');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        toggleBtn.classList.toggle('active', isOpen);
+        const icon = toggleBtn.querySelector('i');
+        if (icon) {
+            icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        }
+    });
+
+    // Close when clicking outside of nav actions
+    document.addEventListener('click', (e) => {
+        if (!toggleBtn.contains(e.target) && !navActions.contains(e.target) && navActions.classList.contains('active')) {
+            navActions.classList.remove('active');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            toggleBtn.classList.remove('active');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) icon.className = 'fa-solid fa-bars';
+        }
+    });
+
+    // Close when clicking any nav link
+    navActions.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navActions.classList.contains('active')) {
+                navActions.classList.remove('active');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                toggleBtn.classList.remove('active');
+                const icon = toggleBtn.querySelector('i');
+                if (icon) icon.className = 'fa-solid fa-bars';
+            }
+        });
+    });
 }
