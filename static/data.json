@@ -219,5 +219,39 @@
         "metricColor": "#38bdf8",
         "actionUrl": "/ip-cidr-generator/",
         "status": "active"
+    },
+    {
+        "id": "docker-compose-generator",
+        "category": "devops",
+        "searchTags": "docker compose generator yaml container docker run compose microservices cloud devops coming soon",
+        "badge": "🐳 Containers",
+        "badgeBg": "rgba(14, 165, 233, 0.1)",
+        "badgeColor": "#0ea5e9",
+        "badgeBorder": "rgba(14, 165, 233, 0.2)",
+        "duration": "🔒 In Progress",
+        "title": "Docker Compose Generator",
+        "desc": "Generate production-grade Docker Compose files with multi-container services, networks, and persistent volumes.",
+        "friendlyMetric": "Container Tool",
+        "metricIcon": "fa-brands fa-docker",
+        "metricColor": "#38bdf8",
+        "actionUrl": "#",
+        "status": "disabled"
+    },
+    {
+        "id": "json-to-yaml-converter",
+        "category": "devops",
+        "searchTags": "json to yaml converter yaml to json schema parser data formatting devops cloud coming soon",
+        "badge": "🔄 Data Transform",
+        "badgeBg": "rgba(168, 85, 247, 0.1)",
+        "badgeColor": "#a855f7",
+        "badgeBorder": "rgba(168, 85, 247, 0.2)",
+        "duration": "🔒 In Progress",
+        "title": "JSON to YAML Converter",
+        "desc": "Convert complex JSON objects into clean YAML configurations and vice versa with real-time schema validation.",
+        "friendlyMetric": "Config Converter",
+        "metricIcon": "fa-solid fa-code-compare",
+        "metricColor": "#c084fc",
+        "actionUrl": "#",
+        "status": "disabled"
     }
 ]

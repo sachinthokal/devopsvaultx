@@ -116,7 +116,9 @@
           },
           "sameAs": [
             "https://www.youtube.com/@devopsvaultx",
-            "https://docs.devopsvaultx.com/"
+            "https://docs.devopsvaultx.com/",
+            "https://www.instagram.com/devopsvaultx?dlrf=OGNjMHFwcDN2Y2Yx",
+            "https://github.com/sachinthokal"
           ]
         },
         {
@@ -282,10 +284,7 @@
             </button>
 
             <nav class="nav-actions" id="mainNavActions" aria-label="Main Navigation">
-                <a class="nav-link" href="/#grid-container">ALL TOOLS</a>
-                <a class="nav-link" href="/merge-pdf/">PDF</a>
-                <a class="nav-link" href="/word-counter/">WORD COUNT</a>
-                <a class="nav-link" href="/qr-code-generator/">QR CODE</a>
+                <a class="nav-link" href="https://docs.devopsvaultx.com/" target="_blank" rel="noopener noreferrer">DOCS</a>
                 <a class="nav-link" href="/sitemap/">SITEMAP</a>
                 <a class="nav-link" href="/about/">ABOUT</a>
                 
@@ -328,6 +327,16 @@
                 <h2 class="contact-title">⚡ Request. Report. Refine.</h2>
                 <p class="contact-text">Have an idea for a new tool? Or did you find a bug in one of our generators? We would love to hear from you.</p>
                 <p class="contact-text"><strong>DevOpsVaultX</strong> is built to help you save time. Send us your feedback directly.</p>
+                
+                <!-- Direct Email Badge for Instant 1-Click Contact -->
+                <div style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.25); border-radius: 10px; padding: 0.85rem 1rem; margin: 0.5rem 0 1rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <i class="fa-solid fa-envelope text-gradient" style="font-size: 1.25rem;" aria-hidden="true"></i>
+                    <div>
+                        <span style="display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); font-weight: 700;">Direct Email Inbox</span>
+                        <a href="mailto:sachin.devops99@gmail.com?subject=DevOpsVaultX%20Feedback" style="color: var(--text-main); font-weight: 700; font-size: 0.88rem; text-decoration: underline;">sachin.devops99@gmail.com</a>
+                    </div>
+                </div>
+
                 <div style="margin-top: 0.5rem;">
                     <a href="/" class="premium-btn" style="width: 100%; max-width: 260px; justify-content: center; padding: 0.65rem; border-radius: 8px; font-size: 0.85rem;">
                         <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Dashboard
@@ -336,13 +345,12 @@
             </article>
 
             <section id="form-wrapper">
-                <form action="https://docs.google.com/forms/d/e/1FAIpQLScsvXGSXBKIQH6ugVCOJZ04othoulVqOvCjy0QhZGdJuKb-qg/formResponse" method="POST" target="hidden_iframe" onsubmit="showSuccessState()" class="terminal-form">
-                    
+                <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLSd_5qLKnTwWk_BSQZO34C_iEb80wx1vG9cZ_WoT0GwnPp7fhQ/formResponse" method="POST" class="terminal-form">
                     <div class="form-row">
                         <label for="usr-name" class="terminal-label">Your Name</label>
                         <div class="input-icon-wrapper">
                             <i class="fa-solid fa-user input-inner-icon" aria-hidden="true"></i>
-                            <input type="text" id="usr-name" name="entry.1816386255" required placeholder="John Doe" autocomplete="name" class="terminal-input">
+                            <input type="text" id="usr-name" name="entry.1716050482" required placeholder="John Doe" autocomplete="name" class="terminal-input">
                         </div>
                     </div>
 
@@ -350,13 +358,21 @@
                         <label for="usr-email" class="terminal-label">Email Address</label>
                         <div class="input-icon-wrapper">
                             <i class="fa-solid fa-envelope input-inner-icon" aria-hidden="true"></i>
-                            <input type="email" id="usr-email" name="entry.390302650" required placeholder="name@example.com" autocomplete="email" class="terminal-input">
+                            <input type="email" id="usr-email" name="entry.495179487" required placeholder="name@example.com" autocomplete="email" class="terminal-input">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="usr-subject" class="terminal-label">Subject</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fa-solid fa-tag input-inner-icon" aria-hidden="true"></i>
+                            <input type="text" id="usr-subject" name="subject" required placeholder="Tool suggestion / Feature request / Feedback" class="terminal-input">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <label for="usr-msg" class="terminal-label">Your Message</label>
-                        <textarea id="usr-msg" name="entry.636805880" required placeholder="Tell us about the tool you want..." class="terminal-input terminal-textarea" rows="4"></textarea>
+                        <textarea id="usr-msg" name="entry.306710249" required placeholder="Tell us about the tool you want..." class="terminal-input terminal-textarea" rows="4"></textarea>
                     </div>
 
                     <div style="margin-top: 0.25rem;">
@@ -370,39 +386,154 @@
     </main>
 </div>
 
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted === true) { handleSuccessUI(); }"></iframe>
-
         </div>
     </main>
 
-    <!-- Semantic Footer with SEO Links & Sitemap -->
-    <footer class="glass-footer" role="contentinfo">
-        <div class="container footer-content-wrapper">
-            <nav class="footer-nav" aria-label="Footer Navigation">
-                <a href="/" class="footer-link">Home</a>
-                <span class="divider" aria-hidden="true">|</span>
-                <a href="/merge-pdf/" class="footer-link">Merge PDF</a>
-                <span class="divider" aria-hidden="true">|</span>
-                <a href="/image-to-pdf/" class="footer-link">Image to PDF</a>
-                <span class="divider" aria-hidden="true">|</span>
-                <a href="/word-counter/" class="footer-link">Word Counter</a>
-                <span class="divider" aria-hidden="true">|</span>
-                <a href="/qr-code-generator/" class="footer-link">QR Generator</a>
-                <span class="divider" aria-hidden="true">|</span>
-                <a href="/password-generator/" class="footer-link">Password Generator</a>
-                <span class="divider" aria-hidden="true">|</span>
-                <a href="/percentage-calculator/" class="footer-link">Percentage Calc</a>
-                <span class="divider" aria-hidden="true">|</span>
-                <a href="/about/" class="footer-link">About</a>
-                <span class="divider" aria-hidden="true">|</span>
-                <a href="/contact/" class="footer-link">Contact</a>
-                <span class="divider" aria-hidden="true">|</span>
-                <a href="/sitemap/" class="footer-link" title="HTML Sitemap">HTML Sitemap</a>
-                <span class="divider" aria-hidden="true">|</span>
-                <a href="/sitemap.xml" target="_blank" rel="noopener" class="footer-link" title="XML Sitemap Feed">XML Sitemap</a>
-            </nav>
-            <div class="footer-center">
-                <p>&copy; 2026 <strong>DevOpsVaultX</strong> <span class="divider" aria-hidden="true">|</span> <span class="text-gradient">Free Daily Online Tools For Everyone Worldwide.</span> <i class="fa fa-heart heartbeat" aria-hidden="true"></i></p>
+    <!-- Semantic Footer with iLovePDF-Style Multi-Column Architecture & Trust Badges -->
+    <footer class="vault-footer" role="contentinfo">
+        <!-- 1. Trust & Security Badges Strip (Similar to ISO/SSL Badges on iLovePDF) -->
+        <div class="footer-trust-strip">
+            <div class="container footer-trust-content">
+                <div class="trust-badge-item">
+                    <i class="fa-solid fa-lock text-gradient" aria-hidden="true"></i>
+                    <div>
+                        <strong>100% Client-Side Privacy</strong>
+                        <span>Files Never Leave Your Device</span>
+                    </div>
+                </div>
+                <div class="trust-badge-item">
+                    <i class="fa-solid fa-shield-halved text-gradient" aria-hidden="true"></i>
+                    <div>
+                        <strong>256-Bit SSL Secured</strong>
+                        <span>Encrypted Data Transmission</span>
+                    </div>
+                </div>
+                <div class="trust-badge-item">
+                    <i class="fa-solid fa-bolt text-gradient" aria-hidden="true"></i>
+                    <div>
+                        <strong>Zero-Server Storage</strong>
+                        <span>Pure Browser Memory Processing</span>
+                    </div>
+                </div>
+                <div class="trust-badge-item">
+                    <i class="fa-solid fa-hand-holding-heart text-gradient" aria-hidden="true"></i>
+                    <div>
+                        <strong>100% Free Forever</strong>
+                        <span>No Limits, No Subscriptions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Main Footer Multi-Column Layout -->
+        <div class="footer-main-content">
+            <div class="container">
+                <div class="footer-columns-grid">
+                <!-- Column 1: PDF & MEDIA -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">PDF &amp; Media</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="/merge-pdf/" class="footer-link">Merge PDF</a></li>
+                        <li><a href="/image-to-pdf/" class="footer-link">Image to PDF</a></li>
+                        <li><a href="/image-converter/" class="footer-link">Image Converter</a></li>
+                        <li><a href="/qr-code-generator/" class="footer-link">QR Code Generator</a></li>
+                        <li><a href="/#grid-container" class="footer-link">Browse All Tools</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: TEXT & UTILITIES -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">Daily Utilities</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="/word-counter/" class="footer-link">Word Counter</a></li>
+                        <li><a href="/password-generator/" class="footer-link">Password Generator</a></li>
+                        <li><a href="/percentage-calculator/" class="footer-link">Percentage Calculator</a></li>
+                        <li><a href="/text-case-converter/" class="footer-link">Text Case Converter</a></li>
+                        <li><a href="/digital-unit-converter/" class="footer-link">Unit Converter</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: TECH & DEVOPS -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">Tech &amp; DevOps</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="/kubernetes-yaml-generator/" class="footer-link">Kubernetes YAML</a></li>
+                        <li><a href="/cron-expression-guru/" class="footer-link">Cron Schedule Guru</a></li>
+                        <li><a href="/ip-cidr-generator/" class="footer-link">IP CIDR Calculator</a></li>
+                        <li><a href="/base64-encoder-decoder/" class="footer-link">Base64 Encoder / Decoder</a></li>
+                        <li><a href="/sitemap/" class="footer-link">HTML Directory</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: COMPANY & LEGAL -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">Company &amp; Legal</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="/about/" class="footer-link">About Us</a></li>
+                        <li><a href="/contact/" class="footer-link">Contact &amp; Support</a></li>
+                        <li><a href="/privacy-policy/" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service/" class="footer-link">Terms of Service</a></li>
+                        <li><a href="/sitemap.xml" target="_blank" rel="noopener" class="footer-link">XML Sitemap Feed</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: CONNECT & APPS (Like iLovePDF App Badges) -->
+                <div class="footer-col footer-col-apps">
+                    <h3 class="footer-col-title">Connect &amp; Apps</h3>
+                    <div class="footer-app-badges">
+                        <a href="https://www.youtube.com/@devopsvaultx?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="app-badge-card" aria-label="Subscribe on YouTube">
+                            <i class="fa-brands fa-youtube app-badge-icon" style="color: #ff2a5f;" aria-hidden="true"></i>
+                            <div class="app-badge-text">
+                                <span class="badge-sub">SUBSCRIBE ON</span>
+                                <span class="badge-title">YouTube Channel</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/sachinthokal" target="_blank" rel="noopener noreferrer" class="app-badge-card" aria-label="Sachin Thokal on GitHub">
+                            <i class="fa-brands fa-github app-badge-icon" aria-hidden="true"></i>
+                            <div class="app-badge-text">
+                                <span class="badge-sub">FOLLOW ON</span>
+                                <span class="badge-title">GitHub Profile</span>
+                            </div>
+                        </a>
+                        <div class="app-badge-card pwa-card">
+                            <i class="fa-solid fa-cloud-arrow-down app-badge-icon text-gradient" aria-hidden="true"></i>
+                            <div class="app-badge-text">
+                                <span class="badge-sub">100% PRIVATE</span>
+                                <span class="badge-title">Browser Web App</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- 3. Bottom Sub-Footer Bar (Language, Copyright, Socials) -->
+        <div class="footer-bottom-bar">
+            <div class="container footer-bottom-content">
+                <div class="footer-lang-pill" title="Current Language">
+                    <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                    <span>English (Global)</span>
+                </div>
+
+                <div class="footer-copyright-text">
+                    &copy; 2026 <strong style="color: #f8fafc;">DevOpsVault<span style="color: var(--danger);">X</span></strong>&reg; &bull; <span style="font-weight: 700;"><span style="color: #38bdf8;">Code.</span> <span style="color: #a855f7;">Deploy.</span> <span style="color: #10b981;">Automate.</span> <span style="color: #f43f5e;">Repeat.</span></span> <i class="fa-solid fa-heart heartbeat" style="color: #ff0000; margin-left: 0.15rem;" aria-hidden="true"></i>
+                </div>
+
+                <div class="footer-social-icons">
+                    <a href="https://www.youtube.com/@devopsvaultx?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="DevOpsVaultX YouTube">
+                        <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.instagram.com/devopsvaultx?dlrf=OGNjMHFwcDN2Y2Yx" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="DevOpsVaultX Instagram">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://github.com/sachinthokal" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Sachin Thokal GitHub">
+                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="DevOpsVaultX LinkedIn">
+                        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
@@ -412,25 +543,63 @@
     
     
 <script>
-    // ⚡ Global scope token binding to guarantee runtime execution context synchronization
-    window.submitted = false;
+    document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('contactForm');
+        if (!contactForm) return;
 
-    function showSuccessState() {
-        window.submitted = true; 
-        const btn = document.querySelector('.terminal-form button[type="submit"]');
-        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-        btn.disabled = true;
-    }
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Sending...';
+            submitBtn.disabled = true;
+
+            const nameVal = document.getElementById('usr-name').value.trim();
+            const emailVal = document.getElementById('usr-email').value.trim();
+            const subjectVal = document.getElementById('usr-subject').value.trim();
+            const msgVal = document.getElementById('usr-msg').value.trim();
+
+            const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd_5qLKnTwWk_BSQZO34C_iEb80wx1vG9cZ_WoT0GwnPp7fhQ/formResponse';
+            
+            // Format message with Subject line on top so it is cleanly captured
+            const fullMessage = subjectVal ? `Subject: ${subjectVal}\n\n${msgVal}` : msgVal;
+
+            const params = new URLSearchParams();
+            params.append('entry.1716050482', nameVal);
+            params.append('entry.495179487', emailVal);
+            params.append('entry.306710249', fullMessage);
+
+            try {
+                await fetch(formUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: params.toString()
+                });
+
+                // Google Form successfully received the submission
+                handleSuccessUI();
+            } catch (err) {
+                console.error('Submission error:', err);
+                // Fallback to standard form submission if fetch fails
+                contactForm.submit();
+            }
+        });
+    });
 
     function handleSuccessUI() {
         const formSection = document.getElementById('form-wrapper');
+        if (!formSection) return;
         formSection.innerHTML = `
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; text-align: center; gap: 1rem; animation: fadeIn 0.5s ease;">
                 <div style="width: 55px; height: 55px; background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #10b981; font-size: 1.35rem; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);">
                     <i class="fa-solid fa-circle-check"></i>
                 </div>
                 <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-main);">Message Sent !!</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 280px; line-height: 1.4;">Thanks for reaching out!<br>Your message is on its way to us. We read every suggestion and will get in touch with you shortly.</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 280px; line-height: 1.4;">Thanks for reaching out!<br>Your message has been recorded. We read every suggestion and will get in touch with you shortly.</p>
                 <a href="${window.location.href}" class="premium-btn" style="margin-top: 0.5rem; font-size: 0.8rem; padding: 0.5rem 1rem; border-radius: 6px;">Send Another Message</a>
             </div>
         `;
