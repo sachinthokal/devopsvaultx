@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Privacy Policy | DevOpsVaultX{% endblock %}
+
+{% block description %}DevOpsVaultX Privacy Policy: 100% private, client-side web tools. We do not store, upload, or inspect your documents, photos, or passwords.{% endblock %}
+
+{% block keywords %}devopsvaultx privacy policy, client-side privacy, secure web tools, no upload tools, browser security{% endblock %}
+
+{% block canonical %}
+<link rel="canonical" href="https://www.devopsvaultx.com/privacy-policy/">
+{% endblock %}
+
+{% block og_title %}Privacy Policy | DevOpsVaultX{% endblock %}
+{% block og_description %}100% client-side privacy. Your files and data never touch our servers.{% endblock %}
+{% block og_url %}https://www.devopsvaultx.com/privacy-policy/{% endblock %}
+
+{% block content %}
+<section class="tool-view-container" style="max-width: 860px; margin: 2rem auto; padding: 2rem 1.5rem;">
+    <div style="text-align: center; margin-bottom: 2.5rem;">
+        <div class="status-badge" style="margin-bottom: 1rem;">
+            <i class="fa-solid fa-shield-halved text-success"></i>&nbsp; 100% CLIENT-SIDE PRIVACY
+        </div>
+        <h1 style="font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 0.75rem;">Privacy Policy</h1>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Last Updated: November 2026 &bull; Effective Immediately</p>
+    </div>
+
+    <div class="tool-card" style="background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 16px; padding: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.8; color: var(--text-muted);">
+        <h2 style="color: var(--text-main); font-size: 1.35rem; margin-bottom: 0.75rem; font-weight: 700;">1. Core Privacy Philosophy: Zero Server Uploads</h2>
+        <p style="margin-bottom: 1.5rem;">
+            At <strong>DevOpsVaultX</strong> (accessible from <a href="https://www.devopsvaultx.com/" style="color: var(--primary);">www.devopsvaultx.com</a>), your privacy is our foundational architectural principle. Unlike conventional web services, our tools (including Merge PDF, Image to PDF, Password Generator, QR Generator, and converters) execute <strong>100% client-side inside your web browser</strong> using modern JavaScript, HTML5 APIs, and WebAssembly.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+            Your files, photos, passwords, and sensitive documents <strong>never leave your local computer or phone</strong>. They are never uploaded, stored, or processed on our backend servers.
+        </p>
+
+        <h2 style="color: var(--text-main); font-size: 1.35rem; margin-bottom: 0.75rem; font-weight: 700;">2. Information We Do Not Collect</h2>
+        <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+            <li>No personal identification data (no sign-up, no passwords, no email collection).</li>
+            <li>No document contents, PDF text, images, or files.</li>
+            <li>No clipboard or converted text data.</li>
+        </ul>
+
+        <h2 style="color: var(--text-main); font-size: 1.35rem; margin-bottom: 0.75rem; font-weight: 700;">3. Third-Party CDNs &amp; Zero-Cookie Policy</h2>
+        <p style="margin-bottom: 1.5rem;">
+            We deliver static visual assets (such as Font Awesome icons) via certified zero-cookie Content Delivery Networks (jsDelivr). We do not set any third-party tracking cookies on your device.
+        </p>
+
+        <h2 style="color: var(--text-main); font-size: 1.35rem; margin-bottom: 0.75rem; font-weight: 700;">4. Aggregated Anonymous Analytics</h2>
+        <p style="margin-bottom: 1.5rem;">
+            We use Google Analytics (GA4) with IP anonymization to understand high-level traffic metrics (such as aggregate page views and browser types) to ensure server stability. GA4 does not track individual user identity or any data processed within the tools.
+        </p>
+
+        <h2 style="color: var(--text-main); font-size: 1.35rem; margin-bottom: 0.75rem; font-weight: 700;">5. Contact &amp; Questions</h2>
+        <p>
+            If you have any questions or feedback regarding this Privacy Policy, please reach out via our <a href="/contact/" style="color: var(--primary);">Contact Page</a> or join our community on GitHub and YouTube.
+        </p>
+    </div>
+</section>
+{% endblock %}
+

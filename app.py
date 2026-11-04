@@ -75,6 +75,16 @@ def contact():
 def about():
     return render_template('about.html')
 
+# Privacy Policy Page
+@app.route('/privacy-policy/')
+def privacy_policy():
+    return render_template('privacy-policy.html')
+
+# Terms of Service Page
+@app.route('/terms-of-service/')
+def terms_of_service():
+    return render_template('terms-of-service.html')
+
 # HTML Sitemap Page
 @app.route('/sitemap/')
 def sitemap():
@@ -95,6 +105,8 @@ def sitemap_xml():
         {"loc": f"{base_url}/sitemap/", "changefreq": "weekly", "priority": "0.8"},
         {"loc": f"{base_url}/about/", "changefreq": "monthly", "priority": "0.6"},
         {"loc": f"{base_url}/contact/", "changefreq": "monthly", "priority": "0.6"},
+        {"loc": f"{base_url}/privacy-policy/", "changefreq": "monthly", "priority": "0.5"},
+        {"loc": f"{base_url}/terms-of-service/", "changefreq": "monthly", "priority": "0.5"},
     ]
     for tool in TOOLS_DATA:
         action_url = tool.get('actionUrl', '')

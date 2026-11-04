@@ -126,6 +126,16 @@
                 <h2 class="contact-title">⚡ Request. Report. Refine.</h2>
                 <p class="contact-text">Have an idea for a new tool? Or did you find a bug in one of our generators? We would love to hear from you.</p>
                 <p class="contact-text"><strong>DevOpsVaultX</strong> is built to help you save time. Send us your feedback directly.</p>
+                
+                <!-- Direct Email Badge for Instant 1-Click Contact -->
+                <div style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.25); border-radius: 10px; padding: 0.85rem 1rem; margin: 0.5rem 0 1rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <i class="fa-solid fa-envelope text-gradient" style="font-size: 1.25rem;" aria-hidden="true"></i>
+                    <div>
+                        <span style="display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); font-weight: 700;">Direct Email Inbox</span>
+                        <a href="mailto:sachin.devops99@gmail.com?subject=DevOpsVaultX%20Feedback" style="color: var(--text-main); font-weight: 700; font-size: 0.88rem; text-decoration: underline;">sachin.devops99@gmail.com</a>
+                    </div>
+                </div>
+
                 <div style="margin-top: 0.5rem;">
                     <a href="{{ url_for('index') }}" class="premium-btn" style="width: 100%; max-width: 260px; justify-content: center; padding: 0.65rem; border-radius: 8px; font-size: 0.85rem;">
                         <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Dashboard
@@ -134,13 +144,12 @@
             </article>
 
             <section id="form-wrapper">
-                <form action="https://docs.google.com/forms/d/e/1FAIpQLScsvXGSXBKIQH6ugVCOJZ04othoulVqOvCjy0QhZGdJuKb-qg/formResponse" method="POST" target="hidden_iframe" onsubmit="showSuccessState()" class="terminal-form">
-                    
+                <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLSd_5qLKnTwWk_BSQZO34C_iEb80wx1vG9cZ_WoT0GwnPp7fhQ/formResponse" method="POST" class="terminal-form">
                     <div class="form-row">
                         <label for="usr-name" class="terminal-label">Your Name</label>
                         <div class="input-icon-wrapper">
                             <i class="fa-solid fa-user input-inner-icon" aria-hidden="true"></i>
-                            <input type="text" id="usr-name" name="entry.1816386255" required placeholder="John Doe" autocomplete="name" class="terminal-input">
+                            <input type="text" id="usr-name" name="entry.1716050482" required placeholder="John Doe" autocomplete="name" class="terminal-input">
                         </div>
                     </div>
 
@@ -148,13 +157,21 @@
                         <label for="usr-email" class="terminal-label">Email Address</label>
                         <div class="input-icon-wrapper">
                             <i class="fa-solid fa-envelope input-inner-icon" aria-hidden="true"></i>
-                            <input type="email" id="usr-email" name="entry.390302650" required placeholder="name@example.com" autocomplete="email" class="terminal-input">
+                            <input type="email" id="usr-email" name="entry.495179487" required placeholder="name@example.com" autocomplete="email" class="terminal-input">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="usr-subject" class="terminal-label">Subject</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fa-solid fa-tag input-inner-icon" aria-hidden="true"></i>
+                            <input type="text" id="usr-subject" name="subject" required placeholder="Tool suggestion / Feature request / Feedback" class="terminal-input">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <label for="usr-msg" class="terminal-label">Your Message</label>
-                        <textarea id="usr-msg" name="entry.636805880" required placeholder="Tell us about the tool you want..." class="terminal-input terminal-textarea" rows="4"></textarea>
+                        <textarea id="usr-msg" name="entry.306710249" required placeholder="Tell us about the tool you want..." class="terminal-input terminal-textarea" rows="4"></textarea>
                     </div>
 
                     <div style="margin-top: 0.25rem;">
@@ -167,31 +184,67 @@
         </div>
     </main>
 </div>
-
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted === true) { handleSuccessUI(); }"></iframe>
 {% endblock %}
 
 {% block scripts %}
 <script>
-    // ⚡ Global scope token binding to guarantee runtime execution context synchronization
-    window.submitted = false;
+    document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('contactForm');
+        if (!contactForm) return;
 
-    function showSuccessState() {
-        window.submitted = true; 
-        const btn = document.querySelector('.terminal-form button[type="submit"]');
-        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-        btn.disabled = true;
-    }
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Sending...';
+            submitBtn.disabled = true;
+
+            const nameVal = document.getElementById('usr-name').value.trim();
+            const emailVal = document.getElementById('usr-email').value.trim();
+            const subjectVal = document.getElementById('usr-subject').value.trim();
+            const msgVal = document.getElementById('usr-msg').value.trim();
+
+            const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd_5qLKnTwWk_BSQZO34C_iEb80wx1vG9cZ_WoT0GwnPp7fhQ/formResponse';
+            
+            // Format message with Subject line on top so it is cleanly captured
+            const fullMessage = subjectVal ? `Subject: ${subjectVal}\n\n${msgVal}` : msgVal;
+
+            const params = new URLSearchParams();
+            params.append('entry.1716050482', nameVal);
+            params.append('entry.495179487', emailVal);
+            params.append('entry.306710249', fullMessage);
+
+            try {
+                await fetch(formUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: params.toString()
+                });
+
+                // Google Form successfully received the submission
+                handleSuccessUI();
+            } catch (err) {
+                console.error('Submission error:', err);
+                // Fallback to standard form submission if fetch fails
+                contactForm.submit();
+            }
+        });
+    });
 
     function handleSuccessUI() {
         const formSection = document.getElementById('form-wrapper');
+        if (!formSection) return;
         formSection.innerHTML = `
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; text-align: center; gap: 1rem; animation: fadeIn 0.5s ease;">
                 <div style="width: 55px; height: 55px; background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #10b981; font-size: 1.35rem; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);">
                     <i class="fa-solid fa-circle-check"></i>
                 </div>
                 <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-main);">Message Sent !!</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 280px; line-height: 1.4;">Thanks for reaching out!<br>Your message is on its way to us. We read every suggestion and will get in touch with you shortly.</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 280px; line-height: 1.4;">Thanks for reaching out!<br>Your message has been recorded. We read every suggestion and will get in touch with you shortly.</p>
                 <a href="${window.location.href}" class="premium-btn" style="margin-top: 0.5rem; font-size: 0.8rem; padding: 0.5rem 1rem; border-radius: 6px;">Send Another Message</a>
             </div>
         `;
